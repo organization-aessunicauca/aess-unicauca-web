@@ -5,6 +5,9 @@
   const pageKey = nav.getAttribute('data-page') || 'inicio';
   const root = nav.getAttribute('data-root') || '';
   const assetRoot = nav.getAttribute('data-assets') || `${root}../assets`;
+  // La home vive en la raíz del sitio, fuera de pages/, así que su ruta no
+  // sigue el mismo patrón "root + archivo" que el resto de enlaces.
+  const homeHref = nav.getAttribute('data-home') || `${root}index.html`;
 
   const links = [
     { key: 'inicio', href: 'index.html', label: 'Inicio' },
@@ -61,7 +64,8 @@
   const menuMarkup = links
     .map((link) => {
       const isActive = link.key === pageKey;
-      return `<a href="${root}${link.href}"${isActive ? ' class="active"' : ''}>${link.label}</a>`;
+      const href = link.key === 'inicio' ? homeHref : `${root}${link.href}`;
+      return `<a href="${href}"${isActive ? ' class="active"' : ''}>${link.label}</a>`;
     })
     .join('');
 
