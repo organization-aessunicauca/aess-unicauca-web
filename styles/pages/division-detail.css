@@ -9,6 +9,8 @@
     margin:0 auto;
     padding:0 40px 120px 40px;
     overflow-x:hidden;
+    min-width:0;      /* hijo de un contenedor flex: evita que una palabra larga lo ensanche */
+    width:100%;
 }
 
 .division-page::before{
@@ -39,6 +41,8 @@
     line-height:1.12;
     margin:18px 0 18px;
     text-transform:uppercase;
+    overflow-wrap:break-word;
+    hyphens:auto;
 }
 
 .division-page__intro h1 .grad{
@@ -250,6 +254,10 @@
 
     .division-page__intro{
         padding-top:44px;
+    }
+
+    .division-page__intro h1{
+        font-size:clamp(1.6rem, 7.4vw, 2.2rem);
     }
 
     .division-hero__media{
