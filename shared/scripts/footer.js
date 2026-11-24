@@ -65,7 +65,7 @@
     </div>
 
     <div class="footer-bar">
-      &bull; EDITORA DE LA PÁGINA: SARAH CABEZA, JHOJAN OROZCO, ANDRÉS MUÑOZ &bull; ADVISOR IEEE AESS UNICAUCA: HERNÁN TOBAR &bull; WEB MASTER:
+      &bull; DISEÑO Y DESARROLLO: SARAH CABEZA &middot; 2026 &bull; EDITORES: SARAH CABEZA, JHOJAN OROZCO, ANDRÉS MUÑOZ &bull; ADVISOR IEEE AESS UNICAUCA: HERNÁN TOBAR &bull;
     </div>
   `;
 })();
