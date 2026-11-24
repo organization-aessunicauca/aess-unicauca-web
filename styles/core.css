@@ -610,6 +610,12 @@ nav{
 
 }
 
+/* El rover (#scroll-buddy) arranca abajo a la izquierda: se deja
+   su ancho libre para que no tape la coordenada de latitud. */
+.coords span:first-child{
+    margin-left:72px;
+}
+
 
 
 /* ==========================================================
