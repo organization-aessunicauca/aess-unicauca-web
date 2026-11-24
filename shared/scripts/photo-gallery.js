@@ -14,9 +14,20 @@
     const heroSrc = match ? match[1] : '';
     if (heroSrc) {
       const tester = new Image();
-      tester.onerror = () => hero.classList.add('no-image');
+      tester.onerror = () => {
+        // Sin foto de portada: se oculta el recuadro y el texto ocupa todo el ancho.
+        hero.classList.add('no-image');
+        console.warn('[photo-gallery] Falta la foto de portada:', heroSrc);
+      };
       tester.src = heroSrc;
     }
+  }
+
+  function hideGridIfEmpty() {
+    if (grid.querySelector('.photo-item')) return;
+    grid.hidden = true;
+    const label = grid.previousElementSibling;
+    if (label && label.classList.contains('section-meta')) label.hidden = true;
   }
 
   const PHOTOS = new Function(`return (${dataEl.textContent.trim()})`)();
@@ -36,7 +47,11 @@
     img.alt = photo.alt;
     img.loading = 'lazy';
     img.addEventListener('error', () => {
-      btn.classList.add('img-missing');
+      // La foto no existe: se quita del mosaico para que el visitante no vea
+      // un recuadro vacío. El aviso queda solo en la consola para quien edita.
+      console.warn('[photo-gallery] Falta la foto:', photo.src);
+      btn.remove();
+      hideGridIfEmpty();
     });
 
     const caption = document.createElement('span');

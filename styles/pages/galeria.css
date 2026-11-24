@@ -277,31 +277,9 @@ html{
             mix-blend-mode:color;
         }
 
-        /* ---------- estado sin foto: patrón + aviso, en vez de un bloque negro vacío ---------- */
-        .gyear-feature__media.no-image .gyear-feature__img{
-            background-image: none !important;
-            background:
-                repeating-linear-gradient(135deg, rgba(246,241,234,.035) 0 16px, transparent 16px 32px),
-                linear-gradient(160deg, #1c1216, var(--panel) 120%);
-        }
-        .gyear-feature__media.no-image::after{ opacity:.3; }
-        .gyear-feature__missing-note{
-            display:none;
-            position:absolute;
-            inset: 14px 14px auto 14px;
-            z-index:2;
-            font-family: var(--mono);
-            font-size:.7rem;
-            line-height:1.55;
-            letter-spacing:.3px;
-            color: var(--muted);
-            background: rgba(8,6,7,.65);
-            border: 1px dashed var(--panel-border);
-            padding: 12px 14px;
-            border-radius: 10px;
-            text-align:center;
-        }
-        .gyear-feature__media.no-image .gyear-feature__missing-note{ display:block; }
+        /* ---------- estado sin foto de portada: se oculta el recuadro ---------- */
+        .gyear-feature.no-image{ grid-template-columns: 1fr; }
+        .gyear-feature.no-image .gyear-feature__media{ display:none; }
 
         .gyear-feature__caption{
             position:absolute;
@@ -598,28 +576,6 @@ html{
         }
 
         /* ---------- reserva visual cuando aún no se ha subido la foto ---------- */
-        .photo-item.img-missing{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            min-height: 170px;
-            background:
-                repeating-linear-gradient(135deg, rgba(246,241,234,.035) 0 14px, transparent 14px 28px),
-                var(--panel);
-        }
-        .photo-item.img-missing img{ display:none; }
-        .photo-item.img-missing::before{
-            content: "ðŸ“· Falta la foto\A" attr(data-path);
-            white-space: pre-line;
-            text-align:center;
-            padding: 0 14px;
-            font-family: var(--mono);
-            font-size: .68rem;
-            line-height:1.6;
-            color: var(--muted);
-        }
-        .photo-item.img-missing .photo-caption{ display:none; }
-
         /* placeholder de página "en construcción" */
         .wip-box{
             margin-top: 36px;
@@ -739,7 +695,6 @@ html{
             .memory-grid .memory-tile.span-2x1{ grid-column: span 1; grid-row: span 1; }
             .photo-grid{ grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap:10px; }
             .gyear-feature__media{ min-height: 200px; }
-            .gyear-feature__missing-note{ font-size:.64rem; }
             .gyear-hero__byline{ gap: 6px 14px; }
         }
 

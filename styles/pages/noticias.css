@@ -288,9 +288,9 @@ html{
 
 .pride{
     margin-top: 0px;
-    margin-left: 220px;   /* ðŸ‘ˆ mismo offset que .main-content, para no quedar bajo el sidebar */
+    margin-left: 220px;   /* 👈 mismo offset que .main-content, para no quedar bajo el sidebar */
     padding: 20px 0 120px 0;
-    width: calc(100% - 220px);  /* ðŸ‘ˆ resta el ancho del sidebar */
+    width: calc(100% - 220px);  /* 👈 resta el ancho del sidebar */
     background: linear-gradient(180deg, transparent, rgba(124,34,56,.08), transparent);
 }
 
