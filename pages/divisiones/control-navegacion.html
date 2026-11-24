@@ -34,13 +34,17 @@
 
         <div class="main-content main-content--scroll">
             <div class="division-page">
+                <div class="division-tabs" role="navigation" aria-label="Divisiones del capítulo">
+                    <a href="astronomia.html" class="division-tab"><span class="division-tab__num">01</span><span class="division-tab__name">Astronomía</span></a>
+                    <a href="sistemas-inteligentes.html" class="division-tab"><span class="division-tab__num">02</span><span class="division-tab__name">Sistemas Inteligentes</span></a>
+                    <a href="control-navegacion.html" class="division-tab" aria-current="page"><span class="division-tab__num">03</span><span class="division-tab__name">Control y Navegación</span></a>
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-tab"><span class="division-tab__num">04</span><span class="division-tab__name">Percepción y Sensores</span></a>
+                </div>
+
                 <div class="division-page__intro">
-                    <span class="eyebrow">DIVISIÓN 03</span>
+                    <span class="eyebrow">División 03</span>
                     <h1>Control y Navegación <span class="grad">para sistemas aeroespaciales</span></h1>
-                    <p>
-                        Página base para presentar la división enfocada en guiado, navegación, estabilidad y
-                        control de plataformas y prototipos del capítulo.
-                    </p>
+                    <p>Diseño de sistemas de control, guiado y navegación para cohetes, satélites y vehículos no tripulados desarrollados por los equipos del capítulo.</p>
                 </div>
 
                 <div class="division-hero">
@@ -52,37 +56,9 @@
                     </div>
 
                     <div class="division-summary">
-                        <div class="division-summary__block">
-                            <h2>Resumen rápido</h2>
-                            <p>Sección pensada para explicar qué sistemas controla la división, qué problemas técnicos resuelve y qué competencias desarrolla en sus miembros.</p>
-                        </div>
-
-                        <div class="division-summary__block">
-                            <h2>Etiquetas clave</h2>
-                            <div class="division-chip-row">
-                                <span class="division-chip">GNC</span>
-                                <span class="division-chip">Simulación</span>
-                                <span class="division-chip">Aviónica</span>
-                                <span class="division-chip">Telemetría</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="division-layout">
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Enfoque de la división</h2>
-                            <p>Este bloque puede describir la lógica de trabajo de la división: modelado, diseño, pruebas, validación y despliegue sobre prototipos o bancos de prueba.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Incluir alcance técnico, metodologías y herramientas usadas.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
+                        <section class="division-summary__block">
                             <h2>Líneas de trabajo</h2>
-                            <ul>
+                            <ul class="division-lines">
                                 <li>Diseño de controladores y estrategias de estabilidad</li>
                                 <li>Guiado, navegación y estimación de estado</li>
                                 <li>Integración con aviónica y sistemas embebidos</li>
@@ -90,35 +66,59 @@
                             </ul>
                         </section>
 
-                        <section class="division-section">
-                            <h2>Proyectos y actividades</h2>
-                            <p>Espacio preparado para listar experimentos, sistemas desarrollados, prototipos y resultados obtenidos.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Agregar hitos, bancos de prueba, retos abiertos y documentación técnica.
-                            </div>
+                        <section class="division-summary__block">
+                            <h2>Quiénes la lideran</h2>
+                            <ul class="division-leaders">
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/jesus_vidal.jpg" alt="Jesús Santiago Moyan Vidal" loading="lazy"><span class="division-leader__name">Jesús Santiago Moyan Vidal</span><span class="division-leader__role">Líder</span></li>
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/Sebastian.png" alt="Jhoan Sebastian Parada Beltran" loading="lazy"><span class="division-leader__name">Jhoan Sebastian Parada Beltran</span><span class="division-leader__role">Colíder</span></li>
+                            </ul>
                         </section>
                     </div>
+                </div>
 
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Liderazgo</h2>
-                            <p>Aquí puede presentarse quién coordina la división, cómo se distribuyen los roles y qué responsabilidades tiene cada integrante clave.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Añadir estructura del equipo y responsables técnicos.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
-                            <h2>Cómo participar</h2>
-                            <p>Usa este espacio para indicar conocimientos recomendados, dinámica de trabajo y forma de ingreso a la división.</p>
-                            <div class="division-cta">
-                                <a href="../divisiones.html#sec-syn" class="division-btn division-btn--secondary">Volver a divisiones</a>
-                                <a href="../proyectos.html" class="division-btn division-btn--primary">Ver proyectos</a>
-                            </div>
-                        </section>
+                <section class="division-projects">
+                    <div class="section-meta">Proyectos relacionados</div>
+                    <div class="division-project-grid">
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">I+D · En desarrollo</span>
+                        <h3>Control Vectorial de Empuje (TVC)</h3>
+                        <p>Tobera, actuadores, electrónica, instrumentación, algoritmos de control y validación experimental para cohetería.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">I+D · En desarrollo</span>
+                        <h3>Banco de pruebas de aviónica y gemelo digital</h3>
+                        <p>Plataforma de pruebas para sistemas de aviónica y su gemelo digital, con SIA e ImmerseTech.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Investigación</span>
+                        <h3>TICANOR</h3>
+                        <p>Proyecto de I+D+i financiado por AES/DSTEI para el diseño e integración de sistemas aéreos no tripulados (UAS).</p>
+                    </a>
                     </div>
+                </section>
+
+                <section class="division-join">
+                    <div>
+                        <span class="eyebrow">Convocatorias abiertas</span>
+                        <h2>¿Quieres sumarte a la división?</h2>
+                        <p>Postúlate a nuestras convocatorias y participa en proyectos reales de investigación, desarrollo e innovación aeroespacial.</p>
+                    </div>
+                    <div class="division-cta">
+                        <a href="https://forms.gle/ge2w6SF74GaRevaz9" class="division-btn division-btn--primary" target="_blank" rel="noopener">Postularme &rarr;</a>
+                        <a href="../proyectos.html" class="division-btn division-btn--secondary">Ver todos los proyectos</a>
+                    </div>
+                </section>
+
+                <div class="division-pager" role="navigation" aria-label="Otras divisiones">
+                    <a href="sistemas-inteligentes.html" class="division-pager__link">
+                        <span>&larr; División 02</span>
+                        <strong>Sistemas Inteligentes</strong>
+                    </a>
+                    <a href="../divisiones.html#sec-syn" class="division-pager__all">Todas las divisiones</a>
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-pager__link division-pager__link--next">
+                        <span>División 04 &rarr;</span>
+                        <strong>Percepción y Sensores</strong>
+                    </a>
                 </div>
             </div>
         </div>

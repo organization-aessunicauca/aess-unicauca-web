@@ -34,13 +34,17 @@
 
         <div class="main-content main-content--scroll">
             <div class="division-page">
+                <div class="division-tabs" role="navigation" aria-label="Divisiones del capítulo">
+                    <a href="astronomia.html" class="division-tab" aria-current="page"><span class="division-tab__num">01</span><span class="division-tab__name">Astronomía</span></a>
+                    <a href="sistemas-inteligentes.html" class="division-tab"><span class="division-tab__num">02</span><span class="division-tab__name">Sistemas Inteligentes</span></a>
+                    <a href="control-navegacion.html" class="division-tab"><span class="division-tab__num">03</span><span class="division-tab__name">Control y Navegación</span></a>
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-tab"><span class="division-tab__num">04</span><span class="division-tab__name">Percepción y Sensores</span></a>
+                </div>
+
                 <div class="division-page__intro">
-                    <span class="eyebrow">DIVISIÓN 01</span>
+                    <span class="eyebrow">División 01</span>
                     <h1>Astronomía <span class="grad">y divulgación del cielo</span></h1>
-                    <p>
-                        Esta página funciona como plantilla base para documentar la división. Aquí luego se puede
-                        ampliar su propósito, actividades insignia, proyectos activos y oportunidades de vinculación.
-                    </p>
+                    <p>Observación astronómica, ciclos de conferencias y campañas de divulgación científica. La división representa al capítulo en competencias internacionales y acerca el cielo a la comunidad universitaria y regional.</p>
                 </div>
 
                 <div class="division-hero">
@@ -52,37 +56,9 @@
                     </div>
 
                     <div class="division-summary">
-                        <div class="division-summary__block">
-                            <h2>Resumen rápido</h2>
-                            <p>Espacio pensado para presentar de forma breve qué hace la división, a quién convoca y qué tipo de experiencias ofrece dentro del capítulo.</p>
-                        </div>
-
-                        <div class="division-summary__block">
-                            <h2>Etiquetas clave</h2>
-                            <div class="division-chip-row">
-                                <span class="division-chip">Observación</span>
-                                <span class="division-chip">Divulgación</span>
-                                <span class="division-chip">Eventos</span>
-                                <span class="division-chip">Competencias</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="division-layout">
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Enfoque de la división</h2>
-                            <p>Usa este bloque para describir la misión de la división, su alcance dentro de AESS Unicauca y cómo se conecta con la formación de estudiantes y con la comunidad externa.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Redactar propósito, objetivos y visión de mediano plazo.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
+                        <section class="division-summary__block">
                             <h2>Líneas de trabajo</h2>
-                            <ul>
+                            <ul class="division-lines">
                                 <li>Observación astronómica y jornadas prácticas</li>
                                 <li>Charlas, talleres y actividades de divulgación</li>
                                 <li>Participación en retos o iniciativas académicas</li>
@@ -90,35 +66,59 @@
                             </ul>
                         </section>
 
-                        <section class="division-section">
-                            <h2>Proyectos y actividades</h2>
-                            <p>Este espacio puede llenarse con tarjetas, cronologías o resultados destacados de la división.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Agregar proyectos activos, histórico de actividades, logros y evidencias visuales.
-                            </div>
+                        <section class="division-summary__block">
+                            <h2>Quiénes la lideran</h2>
+                            <ul class="division-leaders">
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/kevin.jpeg" alt="Kevin Ferney Grisales Rodriguez" loading="lazy"><span class="division-leader__name">Kevin Ferney Grisales Rodriguez</span><span class="division-leader__role">Líder</span></li>
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/danna.jpeg" alt="Danna Isabela Agredo Ruiz" loading="lazy"><span class="division-leader__name">Danna Isabela Agredo Ruiz</span><span class="division-leader__role">Colíder</span></li>
+                            </ul>
                         </section>
                     </div>
+                </div>
 
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Liderazgo</h2>
-                            <p>Aquí puede ir la información del líder y colíder, junto con sus roles y contacto institucional.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Incluir nombres, roles, periodo y forma de contacto.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
-                            <h2>Cómo participar</h2>
-                            <p>Describe aquí el proceso de ingreso, requisitos, nivel esperado y calendario de reuniones.</p>
-                            <div class="division-cta">
-                                <a href="../divisiones.html#sec-astronomia" class="division-btn division-btn--secondary">Volver a divisiones</a>
-                                <a href="../nosotros.html" class="division-btn division-btn--primary">Ver el capítulo</a>
-                            </div>
-                        </section>
+                <section class="division-projects">
+                    <div class="section-meta">Proyectos relacionados</div>
+                    <div class="division-project-grid">
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Investigación</span>
+                        <h3>Búsqueda de Asteroides</h3>
+                        <p>Participación en campañas internacionales de búsqueda de asteroides con el IASC.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Evento</span>
+                        <h3>NASA Space Apps Challenge</h3>
+                        <p>El capítulo es host oficial de la hackatón internacional anual en Popayán.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Divulgación</span>
+                        <h3>Actividades de divulgación</h3>
+                        <p>Talleres, conferencias, demostraciones tecnológicas y experiencias interactivas para instituciones educativas y público general.</p>
+                    </a>
                     </div>
+                </section>
+
+                <section class="division-join">
+                    <div>
+                        <span class="eyebrow">Convocatorias abiertas</span>
+                        <h2>¿Quieres sumarte a la división?</h2>
+                        <p>Postúlate a nuestras convocatorias y participa en proyectos reales de investigación, desarrollo e innovación aeroespacial.</p>
+                    </div>
+                    <div class="division-cta">
+                        <a href="https://forms.gle/ge2w6SF74GaRevaz9" class="division-btn division-btn--primary" target="_blank" rel="noopener">Postularme &rarr;</a>
+                        <a href="../proyectos.html" class="division-btn division-btn--secondary">Ver todos los proyectos</a>
+                    </div>
+                </section>
+
+                <div class="division-pager" role="navigation" aria-label="Otras divisiones">
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-pager__link">
+                        <span>&larr; División 04</span>
+                        <strong>Percepción y Sensores</strong>
+                    </a>
+                    <a href="../divisiones.html#sec-astronomia" class="division-pager__all">Todas las divisiones</a>
+                    <a href="sistemas-inteligentes.html" class="division-pager__link division-pager__link--next">
+                        <span>División 02 &rarr;</span>
+                        <strong>Sistemas Inteligentes</strong>
+                    </a>
                 </div>
             </div>
         </div>

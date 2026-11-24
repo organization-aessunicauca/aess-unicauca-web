@@ -34,13 +34,17 @@
 
         <div class="main-content main-content--scroll">
             <div class="division-page">
+                <div class="division-tabs" role="navigation" aria-label="Divisiones del capítulo">
+                    <a href="astronomia.html" class="division-tab"><span class="division-tab__num">01</span><span class="division-tab__name">Astronomía</span></a>
+                    <a href="sistemas-inteligentes.html" class="division-tab"><span class="division-tab__num">02</span><span class="division-tab__name">Sistemas Inteligentes</span></a>
+                    <a href="control-navegacion.html" class="division-tab"><span class="division-tab__num">03</span><span class="division-tab__name">Control y Navegación</span></a>
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-tab" aria-current="page"><span class="division-tab__num">04</span><span class="division-tab__name">Percepción y Sensores</span></a>
+                </div>
+
                 <div class="division-page__intro">
-                    <span class="eyebrow">DIVISIÓN 04</span>
+                    <span class="eyebrow">División 04</span>
                     <h1>Percepción, Sensores <span class="grad">y Comunicaciones</span></h1>
-                    <p>
-                        Plantilla base para documentar el trabajo de la división orientada a sensado, percepción del
-                        entorno, visión artificial y enlaces de comunicación para sistemas del capítulo.
-                    </p>
+                    <p>Desarrollo de sistemas de sensores, visión artificial y enlaces de comunicación para la telemetría y el monitoreo de los proyectos del capítulo.</p>
                 </div>
 
                 <div class="division-hero">
@@ -52,37 +56,9 @@
                     </div>
 
                     <div class="division-summary">
-                        <div class="division-summary__block">
-                            <h2>Resumen rápido</h2>
-                            <p>Sección breve para explicar el papel de la división en adquisición de datos, percepción, telemetría y comunicación entre sistemas.</p>
-                        </div>
-
-                        <div class="division-summary__block">
-                            <h2>Etiquetas clave</h2>
-                            <div class="division-chip-row">
-                                <span class="division-chip">Sensores</span>
-                                <span class="division-chip">Visión</span>
-                                <span class="division-chip">RF</span>
-                                <span class="division-chip">Telemetría</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="division-layout">
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Enfoque de la división</h2>
-                            <p>Este bloque puede usarse para presentar el rol de la división en instrumentación, sensado, monitoreo, percepción ambiental y comunicación de datos.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Incluir misión, aplicaciones y retos técnicos principales.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
+                        <section class="division-summary__block">
                             <h2>Líneas de trabajo</h2>
-                            <ul>
+                            <ul class="division-lines">
                                 <li>Integración y calibración de sensores</li>
                                 <li>Visión artificial y percepción del entorno</li>
                                 <li>Telemetría, radioenlaces y comunicación</li>
@@ -90,35 +66,59 @@
                             </ul>
                         </section>
 
-                        <section class="division-section">
-                            <h2>Proyectos y actividades</h2>
-                            <p>Zona preparada para mostrar subsistemas, pruebas de campo, arquitectura de comunicaciones y evidencias de desarrollo.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Añadir proyectos activos, diagramas, sensores usados y resultados.
-                            </div>
+                        <section class="division-summary__block">
+                            <h2>Quiénes la lideran</h2>
+                            <ul class="division-leaders">
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/galdifi---gabriel-alejandro-diaz-fierro.jpg" alt="Gabriel Alejandro Diaz Fierro" loading="lazy"><span class="division-leader__name">Gabriel Alejandro Diaz Fierro</span><span class="division-leader__role">Líder</span></li>
+                                <li class="division-leader"><span class="division-leader__photo division-leader__photo--initials" aria-hidden="true">EV</span><span class="division-leader__name">Evelyn Karina Velasco</span><span class="division-leader__role">Colíder</span></li>
+                            </ul>
                         </section>
                     </div>
+                </div>
 
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Liderazgo</h2>
-                            <p>Sección lista para agregar a los responsables de la división, sus funciones y su periodo de trabajo.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Añadir líder, colíder, integrantes base y canales de contacto.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
-                            <h2>Cómo participar</h2>
-                            <p>Aquí se puede documentar el proceso de ingreso, requisitos básicos y tipo de tareas en las que pueden integrarse nuevos miembros.</p>
-                            <div class="division-cta">
-                                <a href="../divisiones.html#sec-cyc" class="division-btn division-btn--secondary">Volver a divisiones</a>
-                                <a href="../eventos.html" class="division-btn division-btn--primary">Ver actividades</a>
-                            </div>
-                        </section>
+                <section class="division-projects">
+                    <div class="section-meta">Proyectos relacionados</div>
+                    <div class="division-project-grid">
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Satélites</span>
+                        <h3>CanSats</h3>
+                        <p>Diseño, integración y validación de satélites tipo CanSat para competencias como el Mundial de CanSat de la UNAM.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Exploración</span>
+                        <h3>Rovers</h3>
+                        <p>Vehículos de exploración terrestre para competencias de robótica y exploración planetaria.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Hidrocohetería</span>
+                        <h3>Carga útil tipo CanSat</h3>
+                        <p>Instrumentación del hidrocohete con el que ATLAS X ganó el primer lugar en el HidroChallenge IPN 2025.</p>
+                    </a>
                     </div>
+                </section>
+
+                <section class="division-join">
+                    <div>
+                        <span class="eyebrow">Convocatorias abiertas</span>
+                        <h2>¿Quieres sumarte a la división?</h2>
+                        <p>Postúlate a nuestras convocatorias y participa en proyectos reales de investigación, desarrollo e innovación aeroespacial.</p>
+                    </div>
+                    <div class="division-cta">
+                        <a href="https://forms.gle/ge2w6SF74GaRevaz9" class="division-btn division-btn--primary" target="_blank" rel="noopener">Postularme &rarr;</a>
+                        <a href="../proyectos.html" class="division-btn division-btn--secondary">Ver todos los proyectos</a>
+                    </div>
+                </section>
+
+                <div class="division-pager" role="navigation" aria-label="Otras divisiones">
+                    <a href="control-navegacion.html" class="division-pager__link">
+                        <span>&larr; División 03</span>
+                        <strong>Control y Navegación</strong>
+                    </a>
+                    <a href="../divisiones.html#sec-cyc" class="division-pager__all">Todas las divisiones</a>
+                    <a href="astronomia.html" class="division-pager__link division-pager__link--next">
+                        <span>División 01 &rarr;</span>
+                        <strong>Astronomía</strong>
+                    </a>
                 </div>
             </div>
         </div>

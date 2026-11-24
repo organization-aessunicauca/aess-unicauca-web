@@ -34,13 +34,17 @@
 
         <div class="main-content main-content--scroll">
             <div class="division-page">
+                <div class="division-tabs" role="navigation" aria-label="Divisiones del capítulo">
+                    <a href="astronomia.html" class="division-tab"><span class="division-tab__num">01</span><span class="division-tab__name">Astronomía</span></a>
+                    <a href="sistemas-inteligentes.html" class="division-tab" aria-current="page"><span class="division-tab__num">02</span><span class="division-tab__name">Sistemas Inteligentes</span></a>
+                    <a href="control-navegacion.html" class="division-tab"><span class="division-tab__num">03</span><span class="division-tab__name">Control y Navegación</span></a>
+                    <a href="percepcion-sensores-comunicaciones.html" class="division-tab"><span class="division-tab__num">04</span><span class="division-tab__name">Percepción y Sensores</span></a>
+                </div>
+
                 <div class="division-page__intro">
-                    <span class="eyebrow">DIVISIÓN 02</span>
+                    <span class="eyebrow">División 02</span>
                     <h1>Sistemas Inteligentes <span class="grad">y Estratégicos</span></h1>
-                    <p>
-                        Plantilla base para documentar el enfoque, los frentes de investigación y las aplicaciones
-                        estratégicas que desarrolla esta división dentro del capítulo.
-                    </p>
+                    <p>Investigación y desarrollo en inteligencia artificial, automatización y planeación estratégica aplicadas a los proyectos aeroespaciales del capítulo.</p>
                 </div>
 
                 <div class="division-hero">
@@ -52,37 +56,9 @@
                     </div>
 
                     <div class="division-summary">
-                        <div class="division-summary__block">
-                            <h2>Resumen rápido</h2>
-                            <p>Bloque pensado para explicar cómo esta división aporta inteligencia computacional, automatización y análisis estratégico a los proyectos del capítulo.</p>
-                        </div>
-
-                        <div class="division-summary__block">
-                            <h2>Etiquetas clave</h2>
-                            <div class="division-chip-row">
-                                <span class="division-chip">IA</span>
-                                <span class="division-chip">Planeación</span>
-                                <span class="division-chip">Datos</span>
-                                <span class="division-chip">Automatización</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="division-layout">
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Enfoque de la división</h2>
-                            <p>Describe aquí la misión de la división, las preguntas que busca resolver y el tipo de soluciones que construye para el ecosistema AESS Unicauca.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Incorporar misión, visión técnica y campos de aplicación.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
+                        <section class="division-summary__block">
                             <h2>Líneas de trabajo</h2>
-                            <ul>
+                            <ul class="division-lines">
                                 <li>Modelos de inteligencia artificial aplicada</li>
                                 <li>Automatización de procesos y toma de decisiones</li>
                                 <li>Análisis de datos técnicos y operativos</li>
@@ -90,35 +66,59 @@
                             </ul>
                         </section>
 
-                        <section class="division-section">
-                            <h2>Proyectos y actividades</h2>
-                            <p>Sección lista para documentar prototipos, experimentos, pruebas, retos internos y resultados alcanzados por la división.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Agregar proyectos activos, backlog técnico y metas por semestre.
-                            </div>
+                        <section class="division-summary__block">
+                            <h2>Quiénes la lideran</h2>
+                            <ul class="division-leaders">
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/farid.jpeg" alt="Farid Santiago Carvajal Morales" loading="lazy"><span class="division-leader__name">Farid Santiago Carvajal Morales</span><span class="division-leader__role">Líder</span></li>
+                                <li class="division-leader"><img class="division-leader__photo" src="../../assets/images/lideres/nathaly.jpeg" alt="Nathaly Michell Bonilla Villaquira" loading="lazy"><span class="division-leader__name">Nathaly Michell Bonilla Villaquira</span><span class="division-leader__role">Colíder</span></li>
+                            </ul>
                         </section>
                     </div>
+                </div>
 
-                    <div class="division-column">
-                        <section class="division-section">
-                            <h2>Liderazgo</h2>
-                            <p>Espacio para registrar líderes, responsabilidades, áreas de coordinación y contactos.</p>
-                            <div class="division-placeholder">
-                                <strong>Completar después</strong>
-                                Añadir nombres del equipo líder y roles específicos.
-                            </div>
-                        </section>
-
-                        <section class="division-section">
-                            <h2>Cómo participar</h2>
-                            <p>Aquí se puede explicar cómo se integra un nuevo miembro, qué habilidades previas son útiles y cómo es el proceso de onboarding.</p>
-                            <div class="division-cta">
-                                <a href="../divisiones.html#sec-sia" class="division-btn division-btn--secondary">Volver a divisiones</a>
-                                <a href="../proyectos.html" class="division-btn division-btn--primary">Ver proyectos</a>
-                            </div>
-                        </section>
+                <section class="division-projects">
+                    <div class="section-meta">Proyectos relacionados</div>
+                    <div class="division-project-grid">
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">I+D · En desarrollo</span>
+                        <h3>IA ligera para UAVs</h3>
+                        <p>Modelos de inferencia en tiempo real sobre plataformas embarcadas, optimizando memoria, procesamiento y consumo energético.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Alianza</span>
+                        <h3>EPICS IEEE</h3>
+                        <p>Herramientas de visión artificial para un sistema de monitoreo ambiental inclusivo en la I.E. Shur Punen, Caldono, comunidad Misak.</p>
+                    </a>
+                    <a class="division-project" href="../proyectos.html">
+                        <span class="division-project__tag">Formación</span>
+                        <h3>Programación para drones</h3>
+                        <p>Simulación, visión artificial y desarrollo de software en Python para drones.</p>
+                    </a>
                     </div>
+                </section>
+
+                <section class="division-join">
+                    <div>
+                        <span class="eyebrow">Convocatorias abiertas</span>
+                        <h2>¿Quieres sumarte a la división?</h2>
+                        <p>Postúlate a nuestras convocatorias y participa en proyectos reales de investigación, desarrollo e innovación aeroespacial.</p>
+                    </div>
+                    <div class="division-cta">
+                        <a href="https://forms.gle/ge2w6SF74GaRevaz9" class="division-btn division-btn--primary" target="_blank" rel="noopener">Postularme &rarr;</a>
+                        <a href="../proyectos.html" class="division-btn division-btn--secondary">Ver todos los proyectos</a>
+                    </div>
+                </section>
+
+                <div class="division-pager" role="navigation" aria-label="Otras divisiones">
+                    <a href="astronomia.html" class="division-pager__link">
+                        <span>&larr; División 01</span>
+                        <strong>Astronomía</strong>
+                    </a>
+                    <a href="../divisiones.html#sec-sia" class="division-pager__all">Todas las divisiones</a>
+                    <a href="control-navegacion.html" class="division-pager__link division-pager__link--next">
+                        <span>División 03 &rarr;</span>
+                        <strong>Control y Navegación</strong>
+                    </a>
                 </div>
             </div>
         </div>
