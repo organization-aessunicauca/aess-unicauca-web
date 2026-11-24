@@ -1,0 +1,7 @@
+# Commits de reorganización estructural (mover/renombrar archivos y dividir CSS).
+# No cambian el contenido escrito, así que `git blame` y la vista Blame de GitHub
+# los omiten para mostrar a la autora original de cada línea.
+# Uso local: git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# refactor all page: 370 archivos movidos a pages/, styles/, shared/ y división de style.css
+ef6d20b55f0eefd7d0ba6adaf0450c6ae8d26802

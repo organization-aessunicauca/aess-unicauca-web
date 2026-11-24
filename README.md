@@ -1,6 +1,18 @@
 # AESS Unicauca Web
 
-Sitio web oficial del Capítulo Estudiantil IEEE AESS Unicauca.
+Sitio web oficial del Capítulo Estudiantil IEEE AESS Unicauca — [aessunicauca.com](https://aessunicauca.com).
+
+## Créditos
+
+**Diseño, contenido y desarrollo principal:** Sarah Cabeza
+
+Con aportes de:
+
+- **Jhojan Orozco**: reorganización de carpetas y estructura del código (`shared/`, `styles/`), footer compartido y páginas de divisiones
+- **Andrés Muñoz**: página 404 y ajustes de estilos y rutas
+- **Juan Alejandro**: SEO, dominio propio y página de inicio en la raíz
+
+Advisor IEEE AESS Unicauca: Hernán Tobar
 
 Este proyecto está organizado como un sitio estático con HTML, CSS y JavaScript vanilla. Durante la reorganización reciente se centralizaron los estilos en `styles/` y los scripts reutilizables en `shared/` para que el proyecto sea más legible, escalable y fácil de mantener.
 
@@ -21,7 +33,6 @@ aess-unicauca-web/
 │       ├── noticias/
 │       └── proyectos/
 ├── pages/
-│   ├── index.html
 │   ├── historia.html
 │   ├── divisiones.html
 │   ├── proyectos.html
@@ -30,6 +41,11 @@ aess-unicauca-web/
 │   ├── galeria.html
 │   ├── nosotros.html
 │   ├── nasa.html
+│   ├── divisiones/
+│   │   ├── astronomia.html
+│   │   ├── control-navegacion.html
+│   │   ├── percepcion-sensores-comunicaciones.html
+│   │   └── sistemas-inteligentes.html
 │   ├── galery/
 │   │   ├── g2020.html
 │   │   ├── g2021.html
@@ -53,7 +69,9 @@ aess-unicauca-web/
 ├── shared/
 │   └── scripts/
 │       ├── nav.js
+│       ├── footer.js
 │       ├── timeline.js
+│       ├── board-slideshow.js
 │       ├── memory-gallery.js
 │       └── photo-gallery.js
 ├── styles/
@@ -61,22 +79,26 @@ aess-unicauca-web/
 │   ├── core.css
 │   └── pages/
 │       ├── divisiones.css
+│       ├── division-detail.css
 │       ├── galeria.css
 │       ├── history.css
 │       ├── nasa.css
 │       ├── noticias.css
+│       ├── not-found.css
 │       └── proyectos.css
-├── index.html
+├── index.html          ← página de inicio
+├── 404.html
+├── sitemap.xml, robots.txt, CNAME
 └── README.md
 ```
 
 ## Cómo funciona la navegación
 
-La raíz del proyecto tiene un `index.html` que redirige a `pages/index.html`.
+La página de inicio es `index.html`, en la raíz. `pages/index.html` solo existe para redirigir enlaces antiguos a la raíz.
 
 Las páginas principales dentro de `pages/` usan un nav compartido renderizado por:
 
-- [shared/scripts/nav.js](C:\Users\asdru\OneDrive\Desktop\aess-unicauca-web\shared\scripts\nav.js)
+- `shared/scripts/nav.js`
 
 Las páginas anidadas, como:
 
@@ -90,9 +112,9 @@ también usan el mismo nav compartido, pero pasando `data-root="../"` para corre
 
 El proyecto ya no usa un único `style.css` gigante en la raíz. Ahora los estilos están centralizados así:
 
-- [styles/main.css](C:\Users\asdru\OneDrive\Desktop\aess-unicauca-web\styles\main.css): punto de entrada único
-- [styles/core.css](C:\Users\asdru\OneDrive\Desktop\aess-unicauca-web\styles\core.css): estilos compartidos globales
-- [styles/pages/](C:\Users\asdru\OneDrive\Desktop\aess-unicauca-web\styles\pages): estilos por área o sección
+- `styles/main.css`: punto de entrada único
+- `styles/core.css`: estilos compartidos globales
+- `styles/pages/`: estilos por área o sección
 
 ### Convención actual
 
@@ -132,7 +154,7 @@ Los scripts reutilizables se movieron a `shared/scripts/`.
 
 Archivos:
 
-- `pages/index.html`
+- `index.html` (inicio)
 - `pages/historia.html`
 - `pages/divisiones.html`
 - `pages/proyectos.html`
@@ -219,7 +241,7 @@ La galería fue una de las áreas más reorganizadas.
 
 Archivo:
 
-- [pages/galeria.html](C:\Users\asdru\OneDrive\Desktop\aess-unicauca-web\pages\galeria.html)
+- `pages/galeria.html`
 
 Muestra las portadas por año usando tarjetas con `background-image`.
 
@@ -257,16 +279,17 @@ Se corrigió un bug donde las imágenes no aparecían porque el loader interpret
 - usar nombres consistentes y evitar mezclar mayúsculas/minúsculas innecesariamente
 - verificar que cada `src` o `background-image` apunte a un archivo existente
 - si se reemplaza una imagen, mantener la ruta cuando sea posible para no romper referencias
+- antes de subir fotos, reducirlas a un máximo de 1920 px de lado y guardarlas como JPG (calidad ~80). Una foto no debería pasar de ~500 KB. Usar PNG solo para logos o imágenes con transparencia
 
 ## Cómo probar cambios localmente
 
-Como es un sitio estático, puedes abrir:
+Como es un sitio estático, basta con abrir `index.html`. Para que las rutas se comporten igual que en el dominio, es mejor servir la carpeta:
 
-- `index.html`
+```bash
+python3 -m http.server 8000
+```
 
-o entrar directamente a:
-
-- `pages/index.html`
+y abrir `http://localhost:8000`.
 
 Si haces cambios en CSS o JS:
 
@@ -274,9 +297,10 @@ Si haces cambios en CSS o JS:
 
 Si una galería no aparece:
 
-1. revisar que el archivo exista en `assets/images/...`
-2. revisar la ruta en el bloque `memory-gallery-data` o `photo-gallery-data`
-3. revisar que el script compartido correspondiente siga enlazado
+1. abrir la consola del navegador (F12): las fotos faltantes aparecen como aviso `[photo-gallery] Falta la foto`. Al visitante no se le muestra nada: la foto simplemente se oculta
+2. revisar que el archivo exista en `assets/images/...`
+3. revisar la ruta en el bloque `memory-gallery-data` o `photo-gallery-data`
+4. revisar que el script compartido correspondiente siga enlazado
 
 ## Estado actual de la arquitectura
 
@@ -293,13 +317,19 @@ A fecha de miércoles 29 de julio de 2026, el proyecto quedó con esta base:
 Si se sigue escalando el sitio, los siguientes pasos recomendados son:
 
 1. mover los datos de galerías a archivos dedicados dentro de `shared/data/`
-2. corregir de forma global problemas de codificación de caracteres (`Galería`, `menú`, etc.)
-3. separar aún más `core.css` en módulos como:
+2. separar aún más `core.css` en módulos como:
    - `base/`
    - `layout/`
    - `components/`
-4. documentar una guía de nombres para imágenes y contenido anual
+3. documentar una guía de nombres para imágenes y contenido anual
+4. generar miniaturas para las galerías anuales: la de 2025 tiene 111 fotos y carga unos 19 MB
+5. completar las crónicas NASA Space Apps 2022, 2023 y 2024 (hoy muestran "memoria en construcción") y el jurado y los ganadores de 2021
 
-## Nota
+## Autoría en el historial de git
 
-Actualmente todavía existen algunos textos con problemas de codificación heredados del contenido original. No afectan la estructura del proyecto, pero sí conviene corregirlos en una pasada de limpieza editorial.
+- `.mailmap` unifica las identidades con que se hicieron los commits. Por ejemplo, los commits firmados como "AESS Unicauca" desde los correos de Sarah aparecen como Sarah Cabeza en `git log`, `git shortlog` y `git blame`.
+- `.git-blame-ignore-revs` lista los commits que solo movieron o renombraron archivos, para que `git blame` y la vista Blame de GitHub muestren a quien escribió cada línea y no a quien la movió. Para usarlo localmente:
+
+```bash
+git config blame.ignoreRevsFile .git-blame-ignore-revs
+```

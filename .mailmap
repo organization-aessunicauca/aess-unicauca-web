@@ -1,0 +1,6 @@
+# Unifica identidades de autoría en el historial (git shortlog, git log, git blame).
+# Formato: Nombre Correcto <correo-correcto> Nombre En Commit <correo-en-commit>
+Sarah Cabeza <scabeza@unicauca.edu.co> AESS Unicauca <scabeza@unicauca.edu.co>
+Sarah Cabeza <scabeza@unicauca.edu.co> AESS Unicauca <aess@unicauca.edu.co>
+Jhojan Orozco <asdrubalorozco4@gmail.com> jhojanorozco <asdrubalorozco4@gmail.com>
+Andrés Muñoz <amunozprado@unicauca.edu.co> andresmunozp <amunozprado@unicauca.edu.co>
