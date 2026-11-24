@@ -85,7 +85,7 @@
 }
 
 /* =========================================================
-   ESTADÃSTICAS
+   ESTADÍSTICAS
    ========================================================= */
 .section-meta {
     display: flex;
@@ -156,7 +156,7 @@
 }
 
 /* =========================================================
-   CÃ“MO FUNCIONA - LÃNEA DE FLUJO ASISTIDA
+   CÓMO FUNCIONA - LÍNEA DE FLUJO ASISTIDA
    ========================================================= */
 .steps {
     display: flex;
@@ -233,7 +233,7 @@
 }
 
 /* =========================================================
-   GALERÃA DE EDICIONES LOCALES
+   GALERÍA DE EDICIONES LOCALES
    ========================================================= */
 .edition-strip {
     display: grid;
@@ -312,7 +312,7 @@
 }
 
 /* =========================================================
-   PANEL DE LLAMADOS A LA ACCIÃ“N
+   PANEL DE LLAMADOS A LA ACCIÓN
    ========================================================= */
 .cta-panel {
     margin-top: 44px;
@@ -346,7 +346,7 @@
 }
 
 /* =========================================================
-   TARJETAS "REVIVE CADA EDICIÃ“N"
+   TARJETAS "REVIVE CADA EDICIÓN"
    ========================================================= */
 .year-grid {
     display: grid;
@@ -426,7 +426,7 @@
 }
 
 /* =========================================================
-   TARJETAS DE PROYECTOS GANADORES (crÃ³nica de ediciÃ³n anual)
+   TARJETAS DE PROYECTOS GANADORES (crónica de edición anual)
    ========================================================= */
 .gyear-winner {
     position: relative;
@@ -473,7 +473,7 @@
     font-weight: 600;
 }
 
-/* ---------- variantes por posiciÃ³n ---------- */
+/* ---------- variantes por posición ---------- */
 .gyear-winner--gold {
     border-left-color: #d9a441;
     box-shadow: 0 0 0 1px rgba(217, 164, 65, 0.08);
@@ -487,7 +487,7 @@
 .gyear-winner--bronze:hover { border-left-color: var(--orange-light); border-color: var(--panel-border); }
 
 /* =========================================================
-   LISTAS DE INTEGRANTES / DATOS (crÃ³nica de ediciÃ³n anual)
+   LISTAS DE INTEGRANTES / DATOS (crónica de edición anual)
    ========================================================= */
 .gyear-list {
     list-style: none;

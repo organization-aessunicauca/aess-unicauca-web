@@ -1,5 +1,5 @@
 /* ==========================================================
-   PESTAÃ‘A DIVISIONES
+   PESTAÑA DIVISIONES
    ========================================================== */
 
    html{
@@ -7,7 +7,7 @@
         }
 
         /* =========================================================
-           PALETA DE MARCA â€” extraÃ­da del isotipo AESS (degradado
+           PALETA DE MARCA — extraída del isotipo AESS (degradado
            granate -> naranja sobre fondo casi negro)
            ========================================================= */
         :root{
@@ -103,7 +103,7 @@
             color: var(--muted);
         }
 
-        /* contador tipo bitÃ¡cora de misiÃ³n */
+        /* contador tipo bitácora de misión */
         .roster-meta{
             display:flex;
             align-items:center;
@@ -145,7 +145,7 @@
             transform: translateY(-3px);
         }
 
-        /* resalta la divisiÃ³n a la que se llegÃ³ por enlace (#sec-...) */
+        /* resalta la división a la que se llegó por enlace (#sec-...) */
         .div-card:target{
             border-color: var(--orange);
             box-shadow: 0 0 0 3px rgba(209,75,44,.4), 0 16px 36px rgba(0,0,0,.5);

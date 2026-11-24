@@ -7,7 +7,7 @@ html{
         }
 
         /* =========================================================
-           PALETA DE MARCA â€” misma paleta que el resto del sitio
+           PALETA DE MARCA — misma paleta que el resto del sitio
            ========================================================= */
         :root{
             --bg: #0a0809;
@@ -115,7 +115,7 @@ html{
         }
 
         /* =========================================================
-           ETIQUETAS DE CATEGORÃA
+           ETIQUETAS DE CATEGORÍA
            ========================================================= */
         .tag{
             display:inline-flex;
@@ -215,7 +215,7 @@ html{
         .read-link:hover{ gap:12px; color: var(--orange-light); }
 
         /* =========================================================
-           CUADRÃCULA DE NOTICIAS
+           CUADRÍCULA DE NOTICIAS
            ========================================================= */
         .news-grid{
             display:grid;
@@ -462,7 +462,7 @@ html{
 
 @media (max-width:960px){
     .pride-card{ flex:0 0 260px; width:260px; height:360px; }
-    .pride-nav{ display:none; } /* en tÃ¡ctil ya deslizan con el dedo */
+    .pride-nav{ display:none; } /* en táctil ya deslizan con el dedo */
 }
 
 @media (max-width:600px){
@@ -586,7 +586,7 @@ html{
         }
 
         /* =========================================================
-           BLOQUES DE CONTENIDO (QuÃ© / CÃ³mo)
+           BLOQUES DE CONTENIDO (Qué / Cómo)
            ========================================================= */
         .statement{
             margin-top: 54px;
@@ -622,7 +622,7 @@ html{
         }
 
         /* =========================================================
-           ÃREAS DE ESTUDIO
+           ÁREAS DE ESTUDIO
            ========================================================= */
         .section-meta{
             display:flex;
@@ -718,7 +718,7 @@ html{
         }
 
         /* =========================================================
-           MISIÃ“N / VISIÃ“N
+           MISIÓN / VISIÓN
            ========================================================= */
         .mv-grid{
             display:grid;
@@ -768,7 +768,7 @@ html{
         }
 
         /* =========================================================
-           JUNTA DIRECTIVA â€” slideshow sincronizado (foto + mensaje)
+           JUNTA DIRECTIVA — slideshow sincronizado (foto + mensaje)
            ========================================================= */
         .board-slideshow{
             position: relative;
@@ -1034,7 +1034,7 @@ html{
         }
 
         /* =========================================================
-           CUADRÃCULA DE EVENTOS
+           CUADRÍCULA DE EVENTOS
            ========================================================= */
         .event-grid{
             display:grid;
@@ -1162,7 +1162,7 @@ html{
             flex-shrink:0;
         }
 
-        /* ---------- eventos pasados: variante mÃ¡s apagada ---------- */
+        /* ---------- eventos pasados: variante más apagada ---------- */
         .event-card--past{
             opacity: .72;
         }

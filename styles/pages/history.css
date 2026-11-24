@@ -310,7 +310,7 @@
 
 
 /* ==========================================================
-   PESTAÃ‘A HISTORIA
+   PESTAÑA HISTORIA
    ========================================================== */
 
         html{
@@ -318,7 +318,7 @@
         }
 
         /* =========================================================
-           PALETA DE MARCA â€” misma paleta que Divisiones, para
+           PALETA DE MARCA — misma paleta que Divisiones, para
            mantener consistencia en todo el sitio.
            ========================================================= */
         :root{
@@ -433,7 +433,7 @@
         }
 
         /* =========================================================
-           BLOQUE DE FUNDACIÃ“N
+           BLOQUE DE FUNDACIÓN
            ========================================================= */
         .founder-block{
             display:grid;
@@ -495,7 +495,7 @@
         .founder-block p:last-child{ margin-bottom:0; }
 
         /* =========================================================
-           CUADRÃCULA DE AÃ‘OS
+           CUADRÍCULA DE AÑOS
            ========================================================= */
         .year-grid{
             display:grid;
@@ -539,7 +539,7 @@
             background: linear-gradient(to top, rgba(8,6,7,.92) 10%, rgba(8,6,7,.15) 60%, transparent 100%);
         }
 
-        /* tarjetas de aÃ±os sin foto todavÃ­a (placeholder) */
+        /* tarjetas de años sin foto todavía (placeholder) */
         .year-card.is-placeholder .year-card__img{ display:none; }
         .year-card.is-placeholder .year-card__tint{
             background: linear-gradient(165deg, var(--panel-border), var(--panel) 80%);
@@ -593,7 +593,7 @@
         .year-card:hover .year-card__cta{ gap:11px; }
 
         /* =========================================================
-           PÃGINA DE DETALLE DE AÃ‘O
+           PÁGINA DE DETALLE DE AÑO
            ========================================================= */
         .back-link{
             display:inline-flex;
@@ -716,7 +716,7 @@
             margin: 28px 0 10px 0;
         }
 
-        /* ---------- bitÃ¡cora / timeline vertical ---------- */
+        /* ---------- bitácora / timeline vertical ---------- */
         .timeline{
             position:relative;
             margin-top: 50px;
@@ -914,7 +914,7 @@
             max-width:none;
         }
 
-        /* placeholder de pÃ¡gina "en construcciÃ³n" */
+        /* placeholder de página "en construcción" */
         .wip-box{
             margin-top: 36px;
             padding: 50px 32px;

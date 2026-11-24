@@ -44,7 +44,7 @@
 }
 
 /* =========================================================
-   ETIQUETA DE CATEGORÃA (sobre la "imagen" de color)
+   ETIQUETA DE CATEGORÍA (sobre la "imagen" de color)
    ========================================================= */
 .project-tag{
     position:absolute;
@@ -68,7 +68,7 @@
 }
 
 /* =========================================================
-   CUADRÃCULA "BENTO" DE PROYECTOS ACTUALES
+   CUADRÍCULA "BENTO" DE PROYECTOS ACTUALES
    ========================================================= */
 .project-grid{
     display:grid;

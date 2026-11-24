@@ -6,7 +6,7 @@ html{
         }
 
         /* =========================================================
-           PALETA DE MARCA â€” misma paleta que Historia/Divisiones
+           PALETA DE MARCA — misma paleta que Historia/Divisiones
            ========================================================= */
         :root{
             --bg: #0a0809;
@@ -116,7 +116,7 @@ html{
         }
 
         /* =========================================================
-           CUADRÃCULA DE AÃ‘OS (portada de la galerÃ­a)
+           CUADRÍCULA DE AÑOS (portada de la galería)
            ========================================================= */
         .year-grid{
             display:grid;
@@ -220,7 +220,7 @@ html{
         .year-card:hover .year-card__cta{ gap:11px; }
 
         /* =========================================================
-           PÃGINA DE GALERÃA DE UN AÃ‘O
+           PÁGINA DE GALERÍA DE UN AÑO
            ========================================================= */
         .back-link{
             display:inline-flex;
@@ -236,7 +236,7 @@ html{
         }
         .back-link:hover{ color: var(--orange-light); gap:12px; }
 
-        /* ---------- tÃ­tulo de la crÃ³nica, fuera de la imagen ---------- */
+        /* ---------- título de la crónica, fuera de la imagen ---------- */
         .gyear-title{
             font-family: var(--display);
             font-size: clamp(1.7rem, 3.6vw, 2.5rem);
@@ -277,7 +277,7 @@ html{
             mix-blend-mode:color;
         }
 
-        /* ---------- estado sin foto: patrÃ³n + aviso, en vez de un bloque negro vacÃ­o ---------- */
+        /* ---------- estado sin foto: patrón + aviso, en vez de un bloque negro vacío ---------- */
         .gyear-feature__media.no-image .gyear-feature__img{
             background-image: none !important;
             background:
@@ -344,7 +344,7 @@ html{
             background: var(--orange-light);
         }
 
-        /* ---------- bajada / dek periodÃ­stico ---------- */
+        /* ---------- bajada / dek periodístico ---------- */
         .gyear-hero__dek{
             font-family: var(--body);
             font-size: 1.05rem;
@@ -353,7 +353,7 @@ html{
             margin: 0;
         }
 
-        /* ---------- crÃ©dito de foto / datos, como pie de nota ---------- */
+        /* ---------- crédito de foto / datos, como pie de nota ---------- */
         .gyear-hero__byline{
             display:flex;
             flex-wrap:wrap;
@@ -558,7 +558,7 @@ html{
         .photo-item.span-2x2{ grid-column: span 2; grid-row: span 2; }
         .photo-item.span-2x1{ grid-column: span 2; }
 
-        /* la leyenda queda siempre visible en una franja inferior, con mÃ¡s Ã©nfasis al pasar el cursor */
+        /* la leyenda queda siempre visible en una franja inferior, con más énfasis al pasar el cursor */
         .photo-caption{
             position:absolute;
             left:0; right:0; bottom:0;
@@ -580,7 +580,7 @@ html{
             font-size: .88rem;
         }
 
-        /* ---------- nÃºmero de foto, como pie editorial ---------- */
+        /* ---------- número de foto, como pie editorial ---------- */
         .photo-item__num{
             position:absolute;
             top:10px; left:10px;
@@ -597,7 +597,7 @@ html{
             backdrop-filter: blur(2px);
         }
 
-        /* ---------- reserva visual cuando aÃºn no se ha subido la foto ---------- */
+        /* ---------- reserva visual cuando aún no se ha subido la foto ---------- */
         .photo-item.img-missing{
             display:flex;
             align-items:center;
@@ -620,7 +620,7 @@ html{
         }
         .photo-item.img-missing .photo-caption{ display:none; }
 
-        /* placeholder de pÃ¡gina "en construcciÃ³n" */
+        /* placeholder de página "en construcción" */
         .wip-box{
             margin-top: 36px;
             padding: 50px 32px;
