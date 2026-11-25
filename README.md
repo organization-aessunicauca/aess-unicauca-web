@@ -294,6 +294,15 @@ y abrir `http://localhost:8000`.
 Si haces cambios en CSS o JS:
 
 - recarga con `Ctrl + F5`
+- **antes de publicar, sube el número de versión** (`?v=AAAAMMDD`) que llevan
+  `styles/main.css`, sus `@import` y los `<script>` de `shared/scripts/`. Si no
+  se cambia, los navegadores de los visitantes pueden seguir usando el CSS
+  viejo con el HTML nuevo y la página se ve desarmada. Para cambiarlo en
+  todo el sitio:
+
+```bash
+V=$(date +%Y%m%d); grep -rlE '\?v=[0-9]+' --include=*.html --include=*.css . | xargs sed -i -E "s/\?v=[0-9]+/?v=$V/g"
+```
 
 Si una galería no aparece:
 
