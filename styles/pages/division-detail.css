@@ -353,6 +353,130 @@
     color:var(--muted);
 }
 
+/* ---------- Temas de interés ---------- */
+.division-topics{ margin-bottom:40px; }
+.division-topics__intro{
+    margin:-6px 0 18px;
+    font-family:var(--body);
+    color:var(--muted);
+    line-height:1.6;
+}
+.division-topic-grid{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    gap:16px;
+}
+.division-topic{
+    position:relative;
+    padding:22px 20px 20px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    background:var(--panel);
+    overflow:hidden;
+    transition:border-color .3s ease, transform .3s ease;
+}
+.division-topic::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:3px;
+    background:linear-gradient(to bottom, var(--orange-light), var(--red));
+    opacity:.75;
+}
+.division-topic:hover{
+    border-color:rgba(224,134,92,.45);
+    transform:translateY(-2px);
+}
+.division-topic__num{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:1.5px;
+    color:var(--orange-light);
+}
+.division-topic h3{
+    margin:8px 0 8px;
+    font-family:var(--display);
+    font-size:.95rem;
+    line-height:1.3;
+    text-transform:uppercase;
+    color:var(--cream);
+}
+.division-topic p{
+    margin:0;
+    font-family:var(--body);
+    font-size:.88rem;
+    line-height:1.6;
+    color:var(--muted);
+}
+
+/* ---------- Integrantes ---------- */
+.division-members{ margin-bottom:40px; }
+.division-member-grid{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));
+    gap:22px 16px;
+}
+.division-member{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:6px;
+}
+.division-member__photo{
+    width:96px;
+    height:96px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(224,134,92,.55);
+    background:var(--maroon);
+    margin-bottom:6px;
+}
+.division-member__photo--initials{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:1.2rem;
+    color:var(--cream);
+}
+.division-member__name{
+    font-family:var(--body);
+    font-weight:600;
+    font-size:.9rem;
+    line-height:1.3;
+    color:var(--cream);
+}
+.division-member__detail{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--orange-light);
+}
+
+/* ---------- Logo de la división ---------- */
+.division-page__intro.has-logo{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    column-gap:24px;
+    align-items:center;
+}
+.division-page__intro.has-logo > :not(.division-page__logo){ grid-column:2; }
+.division-page__logo{
+    grid-row:1 / span 3;
+    width:112px;
+    height:112px;
+    object-fit:contain;
+}
+
 /* ---------- Lista de reproducción de YouTube ---------- */
 .division-video{ margin-bottom:40px; }
 
@@ -710,6 +834,13 @@
     }
 
     .yt-playlist{ padding:16px; }
+
+    .division-member-grid{ grid-template-columns:repeat(2, 1fr); }
+    .division-member__photo{ width:80px; height:80px; }
+
+    .division-page__intro.has-logo{ grid-template-columns:1fr; }
+    .division-page__intro.has-logo > :not(.division-page__logo){ grid-column:1; }
+    .division-page__logo{ grid-row:auto; width:84px; height:84px; margin-bottom:12px; }
     .yt-playlist__item{ grid-template-columns:104px 1fr; }
 
     .division-gallery__grid{

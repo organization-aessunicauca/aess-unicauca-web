@@ -126,6 +126,28 @@ DIVISIONES = [
         # completo: se copia de la URL, lo que va después de "list=" y antes de "&".
         "youtube_lista": "PLF_58DZqI98M",
         "youtube_titulo": "Curso de control inteligente y visión por computadora",
+        # Logo de la división (ruta dentro de assets/images/). None = no se muestra.
+        "logo": None,
+        "temas": [
+            ("Navegación y posicionamiento",
+             "Determinar posición, velocidad y orientación de un vehículo con GNSS, IMU y otros sensores."),
+            ("Lógica difusa (fuzzy logic)",
+             "Controladores basados en reglas lingüísticas para sistemas no lineales o con incertidumbre."),
+            ("Fusión de sensores",
+             "Combinar mediciones de varios sensores para obtener una estimación más confiable que la de cada uno."),
+            ("Estimación de estados",
+             "Reconstruir variables que no se miden directamente a partir de datos ruidosos: observadores y filtros de Kalman."),
+            ("Sistemas de control",
+             "Diseño de controladores clásicos y modernos: PID, espacio de estados y control óptimo."),
+            ("Modelado y simulación",
+             "Modelos matemáticos de sistemas dinámicos y su validación en simulación antes de construir."),
+            ("Automatización",
+             "Integrar sensores, actuadores y lógica para que un proceso opere de forma autónoma."),
+            ("Control de vehículos aeroespaciales",
+             "Guiado, navegación y control (GNC) de cohetes, drones y satélites."),
+        ],
+        # Integrantes (además de los líderes): (nombre, programa o rol, foto en assets/images/ o None)
+        "integrantes": [],
     },
     {
         "archivo": "percepcion-sensores-comunicaciones",
@@ -188,6 +210,16 @@ def lider(nombre, rol, foto):
     return (f'<li class="division-leader">{avatar}'
             f'<span class="division-leader__name">{escape(nombre)}</span>'
             f'<span class="division-leader__role">{escape(rol)}</span></li>')
+
+
+def tarjeta_persona(nombre, detalle, foto):
+    if foto:
+        avatar = (f'<img class="division-member__photo" src="../../assets/images/{foto}" '
+                  f'alt="{escape(nombre)}" loading="lazy">')
+    else:
+        avatar = f'<span class="division-member__photo division-member__photo--initials" aria-hidden="true">{iniciales(nombre)}</span>'
+    det = f'<span class="division-member__detail">{escape(detalle)}</span>' if detalle else ""
+    return f'<li class="division-member">{avatar}<span class="division-member__name">{escape(nombre)}</span>{det}</li>'
 
 
 def version_assets(html):
@@ -262,12 +294,45 @@ def pagina(d, v):
                     <script src="../../shared/scripts/division-gallery.js?v={v}" defer></script>
                 </section>
 '''
+    temas = ""
+    if d.get("temas"):
+        cards = "\n".join(
+            f'''                        <li class="division-topic">
+                            <span class="division-topic__num">{i:02d}</span>
+                            <h3>{escape(nombre)}</h3>
+                            <p>{escape(texto)}</p>
+                        </li>''' for i, (nombre, texto) in enumerate(d["temas"], 1))
+        temas = f'''
+                <section class="division-topics">
+                    <div class="section-meta">Temas de interés</div>
+                    <p class="division-topics__intro">Áreas que la división puede abordar en sus proyectos, cursos e investigación.</p>
+                    <ul class="division-topic-grid">
+{cards}
+                    </ul>
+                </section>
+'''
+    miembros = ""
+    if "integrantes" in d:
+        personas = [(n, r, f"lideres/{f}" if f else None) for n, r, f in d["lideres"]] + list(d["integrantes"])
+        lis = "\n".join(f"                        {tarjeta_persona(*p)}" for p in personas)
+        miembros = f'''
+                <section class="division-members">
+                    <div class="section-meta">Integrantes · {len(personas)}</div>
+                    <ul class="division-member-grid">
+{lis}
+                    </ul>
+                </section>
+'''
+    logo = ""
+    if d.get("logo"):
+        logo = f'<img class="division-page__logo" src="../../assets/images/{d["logo"]}" alt="Logo de la división {escape(d["titulo"])}">'
     titulo_lideres = "Quiénes la lideran" if len(d["lideres"]) > 1 else "Quién la lidera"
     titulo_proyectos = "En qué estamos trabajando"
     return f'''<div class="division-page">
                 {tabs(d)}
 
-                <div class="division-page__intro">
+                <div class="division-page__intro{' has-logo' if logo else ''}">
+                    {logo}
                     <span class="eyebrow">División {d["num"]}</span>
                     <h1>{escape(d["titulo"])} <span class="grad">{escape(d["titulo_grad"])}</span></h1>
                     <p>{escape(d["intro"])}</p>
@@ -304,7 +369,7 @@ def pagina(d, v):
 {proyectos}
                     </div>
                 </section>
-{video}{galeria}
+{temas}{video}{galeria}{miembros}
                 <section class="division-join">
                     <div>
                         <span class="eyebrow">Convocatorias abiertas</span>
