@@ -43,6 +43,7 @@ DIVISIONES = [
             ("Divulgación y educación científica", ""),
         ],
         "imagen": "divasatro.jpeg",
+        "logo": "divisiones/astronomia/logo.webp",
         "badge": "Astronomía · Observación · Outreach",
         "lineas": [
             "Observación astronómica y jornadas prácticas",
@@ -78,7 +79,6 @@ DIVISIONES = [
         "temas": [
             ("Inteligencia artificial", ""),
             ("Aprendizaje automático", ""),
-            ("Visión por computador", ""),
             ("Robótica", ""),
             ("Sistemas autónomos y enjambres", ""),
             ("Planificación y toma de decisiones", ""),
@@ -91,6 +91,7 @@ DIVISIONES = [
             ("Protección de infraestructuras críticas", ""),
         ],
         "imagen": "div2.jpeg",
+        "logo": "divisiones/sistemas-inteligentes/logo.webp",
         "badge": "IA · Automatización · Estrategia",
         "lineas": [
             "Modelos de inteligencia artificial aplicada",
@@ -163,6 +164,8 @@ DIVISIONES = [
              "Combinar mediciones de varios sensores para obtener una estimación más confiable que la de cada uno."),
             ("Estimación de estados",
              "Reconstruir variables que no se miden directamente a partir de datos ruidosos: observadores y filtros de Kalman."),
+            ("Visión por computador",
+             "Extraer información de imágenes y video para medir, detectar y guiar sistemas."),
             ("Sistemas de control",
              "Diseño de controladores clásicos y modernos: PID, espacio de estados y control óptimo."),
             ("Modelado y simulación",
@@ -200,6 +203,7 @@ DIVISIONES = [
             ("Navegación y posicionamiento", ""),
         ],
         "imagen": "psc.jpeg",
+        "logo": "divisiones/percepcion-sensores-comunicaciones/logo.webp",
         "badge": "Sensores · Visión · Enlaces",
         "lineas": [
             "Integración y calibración de sensores",

@@ -496,7 +496,7 @@
     aspect-ratio:1 / 1;
     margin:18px 0;            /* los mismos márgenes del h1, para igualar su altura */
     object-fit:contain;
-    filter:drop-shadow(0 12px 30px rgba(10,80,200,.35));
+    filter:drop-shadow(0 12px 30px rgba(0,0,0,.45));   /* sombra neutra: sirve para logos de cualquier color */
 }
 
 /* ---------- Lista de reproducción de YouTube ---------- */
