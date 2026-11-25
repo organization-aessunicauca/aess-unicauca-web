@@ -81,20 +81,15 @@
     inset:0;
     background-size:cover;
     background-position:center;
-    filter:grayscale(15%) contrast(1.05) brightness(.95);
 }
 
-.division-hero__tint{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(160deg, rgba(124,34,56,.45), rgba(209,75,44,.18));
-    mix-blend-mode:multiply;
-}
+.division-hero__tint{ display:none; }   /* foto sin filtro de color */
 
 .division-hero__shade{
     position:absolute;
     inset:0;
-    background:linear-gradient(to top, rgba(8,6,7,.7) 0%, rgba(8,6,7,.05) 45%, transparent);
+    /* solo una sombra suave abajo para que se lea la etiqueta */
+    background:linear-gradient(to top, rgba(8,6,7,.55) 0%, transparent 28%);
 }
 
 .division-hero__badge{
@@ -466,7 +461,9 @@
 /* Logo a la derecha del título y con su misma altura. Filas: eyebrow, h1, párrafo. */
 .division-page__intro.has-logo{
     display:grid;
-    grid-template-columns:minmax(0, 1fr) auto;
+    /* columna fija: el ancho del logo depende de la altura del título y
+       una columna "auto" se calcularía antes de conocerla */
+    grid-template-columns:minmax(0, 1fr) 200px;
     column-gap:40px;
     max-width:none;
 }
@@ -477,11 +474,13 @@
 .division-page__logo{
     grid-column:2;
     grid-row:2;               /* la fila del título */
-    align-self:stretch;
-    /* height:0 + min-height:100% → el logo toma la altura del título
-       sin agrandar la fila con su tamaño propio */
+    justify-self:end;
+    align-self:center;
+    /* height:0 + min-height → el logo toma la altura del título sin agrandar
+       la fila con su tamaño propio. Tope de 200px: si el título pasa de 3
+       líneas, el logo no sigue creciendo. */
     height:0;
-    min-height:calc(100% - 36px);   /* fila del h1 menos sus márgenes (18px + 18px) */
+    min-height:min(calc(100% - 36px), 200px);   /* fila del h1 menos sus márgenes (18px + 18px) */
     width:auto;
     aspect-ratio:1 / 1;
     margin:18px 0;            /* los mismos márgenes del h1, para igualar su altura */
@@ -804,9 +803,31 @@
 }
 .division-pager__all:hover{ color:var(--cream); }
 
+/* Por debajo de ~1200px el título ya no cabe en 3 líneas: igualar su altura
+   haría el logo enorme. Va pequeño a la derecha de la etiqueta "División 03". */
+@media (max-width: 1199px){
+    .division-page__intro.has-logo{ grid-template-columns:minmax(0, 1fr) auto; column-gap:16px; }
+    .division-page__intro.has-logo > h1:not(.division-page__logo),
+    .division-page__intro.has-logo > p:not(.division-page__logo){ grid-column:1 / -1; }
+    .division-page__logo{
+        grid-row:1;
+        align-self:end;
+        height:96px;
+        min-height:0;
+        width:96px;
+        margin:0;
+    }
+}
+
 @media (max-width: 980px){
     .division-hero{
         grid-template-columns:1fr;
+    }
+
+    /* listas largas en la caja de resumen: dos columnas cuando ocupa todo el ancho */
+    .division-lines--cols{
+        grid-template-columns:1fr 1fr;
+        column-gap:24px;
     }
 
     .yt-playlist.has-list .yt-playlist__body{
@@ -845,23 +866,14 @@
         grid-template-columns:1fr;
     }
 
+    .division-lines--cols{ grid-template-columns:1fr; }
+
     .yt-playlist{ padding:16px; }
 
     .division-member-grid{ grid-template-columns:repeat(2, 1fr); }
     .division-member__photo{ width:80px; height:80px; }
 
-    /* en móvil el logo va a la derecha de la etiqueta "División 03" */
-    .division-page__intro.has-logo{ column-gap:16px; }
-    .division-page__intro.has-logo > h1:not(.division-page__logo),
-    .division-page__intro.has-logo > p:not(.division-page__logo){ grid-column:1 / -1; }
-    .division-page__logo{
-        grid-row:1;
-        align-self:end;
-        height:72px;
-        min-height:0;
-        width:72px;
-        margin:0;
-    }
+    .division-page__logo{ height:72px; width:72px; }
     .yt-playlist__item{ grid-template-columns:104px 1fr; }
 
     .division-gallery__grid{

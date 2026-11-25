@@ -230,7 +230,10 @@ def version_assets(html):
 def pagina(d, v):
     i = DIVISIONES.index(d)
     ant, sig = DIVISIONES[i - 1], DIVISIONES[(i + 1) % len(DIVISIONES)]
-    chips = "\n".join(f'                                <li>{escape(l)}</li>' for l in d["lineas"])
+    items_resumen = [nombre for nombre, _ in d["temas"]] if d.get("temas") else d["lineas"]
+    titulo_resumen = "Temas de interés" if d.get("temas") else "Líneas de trabajo"
+    clase_resumen = " division-lines--cols" if len(items_resumen) > 5 else ""
+    chips = "\n".join(f'                                <li>{escape(l)}</li>' for l in items_resumen)
     lideres = "\n".join(f"                                {lider(*l)}" for l in d["lideres"])
     proyectos = "\n".join(
         f'''                    <a class="division-project" href="../proyectos.html">
@@ -312,8 +315,8 @@ def pagina(d, v):
                 </section>
 '''
     miembros = ""
-    if "integrantes" in d:
-        personas = [(n, r, f"lideres/{f}" if f else None) for n, r, f in d["lideres"]] + list(d["integrantes"])
+    if True:  # todas las divisiones muestran integrantes (al menos sus líderes)
+        personas = [(n, r, f"lideres/{f}" if f else None) for n, r, f in d["lideres"]] + list(d.get("integrantes", []))
         lis = "\n".join(f"                        {tarjeta_persona(*p)}" for p in personas)
         miembros = f'''
                 <section class="division-members">
@@ -348,16 +351,9 @@ def pagina(d, v):
 
                     <div class="division-summary">
                         <section class="division-summary__block">
-                            <h2>Líneas de trabajo</h2>
-                            <ul class="division-lines">
+                            <h2>{titulo_resumen}</h2>
+                            <ul class="division-lines{clase_resumen}">
 {chips}
-                            </ul>
-                        </section>
-
-                        <section class="division-summary__block">
-                            <h2>{titulo_lideres}</h2>
-                            <ul class="division-leaders">
-{lideres}
                             </ul>
                         </section>
                     </div>
@@ -369,7 +365,7 @@ def pagina(d, v):
 {proyectos}
                     </div>
                 </section>
-{temas}{video}{galeria}{miembros}
+{video}{galeria}{miembros}
                 <section class="division-join">
                     <div>
                         <span class="eyebrow">Convocatorias abiertas</span>
