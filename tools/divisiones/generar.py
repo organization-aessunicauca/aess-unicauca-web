@@ -74,17 +74,12 @@ DIVISIONES = [
         ],
         "lideres": [
             ("Farid Santiago Carvajal Morales", "Líder", "farid.jpeg"),
-            ("Nathaly Michell Bonilla Villaquira", "Colíder", "nathaly.jpeg"),
         ],
         "proyectos": [
-            ("I+D · En desarrollo", "IA ligera para UAVs",
-             "Modelos de inferencia en tiempo real sobre plataformas embarcadas, optimizando "
-             "memoria, procesamiento y consumo energético."),
-            ("Alianza", "EPICS IEEE",
-             "Herramientas de visión artificial para un sistema de monitoreo ambiental "
-             "inclusivo en la I.E. Shur Punen, Caldono, comunidad Misak."),
-            ("Formación", "Programación para drones",
-             "Simulación, visión artificial y desarrollo de software en Python para drones."),
+            ("Simulación", "Simulación PsyImmerse",
+             "Desarrollo de simulaciones con el semillero PsyImmerse."),
+            ("Drones", "Construcción de drones",
+             "Diseño, armado y pruebas de drones construidos por la división."),
         ],
     },
     {
@@ -111,16 +106,15 @@ DIVISIONES = [
             ("Jhoan Sebastian Parada Beltran", "Colíder", "Sebastian.png"),
         ],
         "proyectos": [
-            ("I+D · En desarrollo", "Control Vectorial de Empuje (TVC)",
-             "Tobera, actuadores, electrónica, instrumentación, algoritmos de control y "
-             "validación experimental para cohetería."),
-            ("I+D · En desarrollo", "Banco de pruebas de aviónica y gemelo digital",
-             "Plataforma de pruebas para sistemas de aviónica y su gemelo digital, con SIA "
-             "e ImmerseTech."),
-            ("Investigación", "TICANOR",
-             "Proyecto de I+D+i financiado por AES/DSTEI para el diseño e integración de "
-             "sistemas aéreos no tripulados (UAS)."),
+            ("Formación", "Control inteligente y visión por computadora",
+             "Los líderes de la división están realizando un curso de control inteligente y "
+             "visión por computadora para aplicarlo en los proyectos del capítulo. Las "
+             "sesiones se publican en YouTube."),
         ],
+        # Lista de YouTube del curso. Si el video no carga, revisa que el ID esté
+        # completo: se copia de la URL, lo que va después de "list=" y antes de "&".
+        "youtube_lista": "PLF_58DZqI98M",
+        "youtube_titulo": "Curso de control inteligente y visión por computadora",
     },
     {
         "archivo": "percepcion-sensores-comunicaciones",
@@ -142,19 +136,12 @@ DIVISIONES = [
             "Monitoreo de variables para proyectos aeroespaciales",
         ],
         "lideres": [
-            ("Gabriel Alejandro Diaz Fierro", "Líder", "galdifi---gabriel-alejandro-diaz-fierro.jpg"),
             ("Evelyn Karina Velasco", "Colíder", None),
         ],
         "proyectos": [
-            ("Satélites", "CanSats",
-             "Diseño, integración y validación de satélites tipo CanSat para competencias "
-             "como el Mundial de CanSat de la UNAM."),
-            ("Exploración", "Rovers",
-             "Vehículos de exploración terrestre para competencias de robótica y "
-             "exploración planetaria."),
-            ("Hidrocohetería", "Carga útil tipo CanSat",
-             "Instrumentación del hidrocohete con el que ATLAS X ganó el primer lugar en el "
-             "HidroChallenge IPN 2025."),
+            ("Investigación", "Filtro de Kalman",
+             "Construcción del marco teórico sobre el filtro de Kalman para la estimación y "
+             "fusión de datos de sensores."),
         ],
     },
 ]
@@ -203,6 +190,23 @@ def pagina(d):
                         <h3>{escape(nombre)}</h3>
                         <p>{escape(texto)}</p>
                     </a>''' for tag, nombre, texto in d["proyectos"])
+    video = ""
+    if d.get("youtube_lista"):
+        lista = escape(d["youtube_lista"])
+        video = f'''
+                <section class="division-video">
+                    <div class="section-meta">Videos del curso</div>
+                    <div class="division-video__frame">
+                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={lista}"
+                                title="{escape(d["youtube_titulo"])}" loading="lazy"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <a class="division-video__link" href="https://www.youtube.com/playlist?list={lista}" target="_blank" rel="noopener">Ver la lista completa en YouTube &rarr;</a>
+                </section>
+'''
+    titulo_lideres = "Quiénes la lideran" if len(d["lideres"]) > 1 else "Quién la lidera"
+    titulo_proyectos = "En qué estamos trabajando"
     return f'''<div class="division-page">
                 {tabs(d)}
 
@@ -229,7 +233,7 @@ def pagina(d):
                         </section>
 
                         <section class="division-summary__block">
-                            <h2>Quiénes la lideran</h2>
+                            <h2>{titulo_lideres}</h2>
                             <ul class="division-leaders">
 {lideres}
                             </ul>
@@ -238,12 +242,12 @@ def pagina(d):
                 </div>
 
                 <section class="division-projects">
-                    <div class="section-meta">Proyectos relacionados</div>
+                    <div class="section-meta">{titulo_proyectos}</div>
                     <div class="division-project-grid">
 {proyectos}
                     </div>
                 </section>
-
+{video}
                 <section class="division-join">
                     <div>
                         <span class="eyebrow">Convocatorias abiertas</span>

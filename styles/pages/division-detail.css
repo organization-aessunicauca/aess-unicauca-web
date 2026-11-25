@@ -312,7 +312,7 @@
 
 .division-project-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     gap:20px;
 }
 .division-project{
@@ -352,6 +352,34 @@
     line-height:1.65;
     color:var(--muted);
 }
+
+/* ---------- Widget de YouTube ---------- */
+.division-video{ margin-bottom:40px; }
+.division-video__frame{
+    position:relative;
+    aspect-ratio:16 / 9;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid var(--panel-border);
+    background:var(--panel);
+}
+.division-video__frame iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+.division-video__link{
+    display:inline-block;
+    margin-top:14px;
+    font-family:var(--body);
+    font-weight:600;
+    font-size:.92rem;
+    color:var(--orange-light);
+    text-decoration:none;
+}
+.division-video__link:hover{ text-decoration:underline; }
 
 /* ---------- Convocatoria ---------- */
 .division-join{
@@ -411,9 +439,6 @@
 @media (max-width: 980px){
     .division-hero{
         grid-template-columns:1fr;
-    }
-    .division-project-grid{
-        grid-template-columns:1fr 1fr;
     }
 }
 

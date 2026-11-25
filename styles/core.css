@@ -2126,6 +2126,7 @@ nav{
 .admin-people{
 
     display:flex;
+    justify-content:center;
 
     gap:16px;
 
@@ -2134,6 +2135,8 @@ nav{
 .admin-person{
 
     flex:1;
+    /* mismo tamaño aunque la división tenga una sola persona */
+    max-width:calc(50% - 8px);
 
     display:flex;
     flex-direction:column;
