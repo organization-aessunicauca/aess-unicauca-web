@@ -90,8 +90,16 @@ DIVISIONES = [
             ("Seguridad funcional", ""),
             ("Protección de infraestructuras críticas", ""),
         ],
-        "imagen": "div2.jpeg",
+        "imagen": "divisiones/sistemas-inteligentes/portada.webp",
         "logo": "divisiones/sistemas-inteligentes/logo.webp",
+        "galeria": [
+            ("divisiones/sistemas-inteligentes/dron.webp",
+             "Integrantes de la división armando un dron tricóptero sobre una mesa de trabajo",
+             "Construcción de drones", "50% 78%"),
+            ("divisiones/sistemas-inteligentes/clase-esp32.webp",
+             "Integrante explicando en el tablero una conexión entre placas ESP32 con ESP-NOW",
+             "Sesión de trabajo: comunicación entre ESP32 con ESP-NOW"),
+        ],
         "badge": "IA · Automatización · Estrategia",
         "lineas": [
             "Modelos de inteligencia artificial aplicada",
@@ -321,11 +329,13 @@ def pagina(d, v):
 '''
     galeria = ""
     if d.get("galeria"):
-        items = "\n".join(
-            f'''                        <button type="button" class="division-gallery__item" data-full="../../assets/images/{foto}" data-caption="{escape(pie)}">
-                            <img src="../../assets/images/{foto}" alt="{escape(alt)}" loading="lazy">
+        def item(foto, alt, pie, encuadre=None):
+            pos = f' style="object-position:{encuadre}"' if encuadre else ""
+            return f'''                        <button type="button" class="division-gallery__item" data-full="../../assets/images/{foto}" data-caption="{escape(pie)}">
+                            <img src="../../assets/images/{foto}" alt="{escape(alt)}" loading="lazy"{pos}>
                             <span class="division-gallery__caption">{escape(pie)}</span>
-                        </button>''' for foto, alt, pie in d["galeria"])
+                        </button>'''
+        items = "\n".join(item(*g) for g in d["galeria"])
         galeria = f'''
                 <section class="division-gallery">
                     <div class="section-meta">Galería de la división</div>

@@ -14,16 +14,16 @@
     <meta property="og:title" content="Sistemas Inteligentes y Estratégicos - AESS Unicauca">
     <meta property="og:description" content="División de Sistemas Inteligentes y Estratégicos de AESS Unicauca: sistemas que analizan información, aprenden, toman decisiones y operan de forma autónoma.">
     <meta property="og:url" content="https://aessunicauca.com/pages/divisiones/sistemas-inteligentes.html">
-    <meta property="og:image" content="https://aessunicauca.com/assets/images/div2.jpeg">
+    <meta property="og:image" content="https://aessunicauca.com/assets/images/divisiones/sistemas-inteligentes/portada.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sistemas Inteligentes y Estratégicos - AESS Unicauca">
     <meta name="twitter:description" content="División de Sistemas Inteligentes y Estratégicos de AESS Unicauca: sistemas que analizan información, aprenden, toman decisiones y operan de forma autónoma.">
-    <meta name="twitter:image" content="https://aessunicauca.com/assets/images/div2.jpeg">
+    <meta name="twitter:image" content="https://aessunicauca.com/assets/images/divisiones/sistemas-inteligentes/portada.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../../assets/images/logos/logo2circ.png">
-    <link rel="stylesheet" href="../../styles/main.css?v=2026112507">
+    <link rel="stylesheet" href="../../styles/main.css?v=2026112508">
     <link rel="stylesheet" href="../../styles/pages/division-detail.css">
 </head>
 
@@ -50,7 +50,7 @@
 
                 <div class="division-hero">
                     <div class="division-hero__media">
-                        <div class="division-hero__img" style="background-image:url('../../assets/images/div2.jpeg')"></div>
+                        <div class="division-hero__img" style="background-image:url('../../assets/images/divisiones/sistemas-inteligentes/portada.webp')"></div>
                         <div class="division-hero__tint"></div>
                         <div class="division-hero__shade"></div>
                         <div class="division-hero__badge">IA · Automatización · Estrategia</div>
@@ -93,6 +93,30 @@
                     </div>
                 </section>
 
+                <section class="division-gallery">
+                    <div class="section-meta">Galería de la división</div>
+                    <div class="division-gallery__grid">
+                        <button type="button" class="division-gallery__item" data-full="../../assets/images/divisiones/sistemas-inteligentes/dron.webp" data-caption="Construcción de drones">
+                            <img src="../../assets/images/divisiones/sistemas-inteligentes/dron.webp" alt="Integrantes de la división armando un dron tricóptero sobre una mesa de trabajo" loading="lazy" style="object-position:50% 78%">
+                            <span class="division-gallery__caption">Construcción de drones</span>
+                        </button>
+                        <button type="button" class="division-gallery__item" data-full="../../assets/images/divisiones/sistemas-inteligentes/clase-esp32.webp" data-caption="Sesión de trabajo: comunicación entre ESP32 con ESP-NOW">
+                            <img src="../../assets/images/divisiones/sistemas-inteligentes/clase-esp32.webp" alt="Integrante explicando en el tablero una conexión entre placas ESP32 con ESP-NOW" loading="lazy">
+                            <span class="division-gallery__caption">Sesión de trabajo: comunicación entre ESP32 con ESP-NOW</span>
+                        </button>
+                    </div>
+                    <dialog class="division-lightbox" id="division-lightbox" aria-label="Foto ampliada">
+                        <button type="button" class="division-lightbox__btn division-lightbox__close" data-accion="cerrar" aria-label="Cerrar">&times;</button>
+                        <button type="button" class="division-lightbox__btn division-lightbox__prev" data-accion="anterior" aria-label="Foto anterior">&larr;</button>
+                        <figure>
+                            <img src="" alt="">
+                            <figcaption></figcaption>
+                        </figure>
+                        <button type="button" class="division-lightbox__btn division-lightbox__next" data-accion="siguiente" aria-label="Foto siguiente">&rarr;</button>
+                    </dialog>
+                    <script src="../../shared/scripts/division-gallery.js?v=2026112508" defer></script>
+                </section>
+
                 <section class="division-members">
                     <div class="section-meta">Integrantes · 1</div>
                     <ul class="division-member-grid">
@@ -127,9 +151,9 @@
         </div>
     </section>
 
-    <script src="../../shared/scripts/nav.js?v=2026112507"></script>
+    <script src="../../shared/scripts/nav.js?v=2026112508"></script>
     <footer id="site-footer" data-root="../"></footer>
-    <script src="../../shared/scripts/footer.js?v=2026112507"></script>
+    <script src="../../shared/scripts/footer.js?v=2026112508"></script>
 </body>
 
 </html>
