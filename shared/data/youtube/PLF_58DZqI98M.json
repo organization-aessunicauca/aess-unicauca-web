@@ -1,0 +1,16 @@
+{
+  "lista": "PLF_58DZqI98M",
+  "titulo": "Serie de tutoriales: Control Inteligente | IEEE AESS Unicauca",
+  "videos": [
+    {
+      "id": "M4hiDeOzD5Q",
+      "titulo": "Control con algoritmos geneticos",
+      "publicado": "2026-11-05"
+    },
+    {
+      "id": "k8FCFHkPn9k",
+      "titulo": "Lógica difusa en MATLAB: del Fuzzy Logic Designer al control de un avión y un cohete con TVC",
+      "publicado": "2026-11-05"
+    }
+  ]
+}
