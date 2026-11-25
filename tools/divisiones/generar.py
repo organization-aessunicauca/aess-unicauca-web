@@ -127,7 +127,7 @@ DIVISIONES = [
         "youtube_lista": "PLF_58DZqI98M",
         "youtube_titulo": "Curso de control inteligente y visión por computadora",
         # Logo de la división (ruta dentro de assets/images/). None = no se muestra.
-        "logo": None,
+        "logo": "divisiones/control-navegacion/logo.webp",
         "temas": [
             ("Navegación y posicionamiento",
              "Determinar posición, velocidad y orientación de un vehículo con GNSS, IMU y otros sensores."),
