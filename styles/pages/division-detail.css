@@ -472,9 +472,7 @@
 /* Logo a la derecha del título y con su misma altura. Filas: eyebrow, h1, párrafo. */
 .division-page__intro.has-logo{
     display:grid;
-    /* columna fija: el ancho del logo depende de la altura del título y
-       una columna "auto" se calcularía antes de conocerla */
-    grid-template-columns:minmax(0, 1fr) 200px;
+    grid-template-columns:minmax(0, 1fr) 184px;
     column-gap:40px;
     max-width:none;
 }
@@ -484,17 +482,13 @@
 }
 .division-page__logo{
     grid-column:2;
-    grid-row:2;               /* la fila del título */
+    grid-row:1 / span 3;      /* junto a etiqueta + título + párrafo */
     justify-self:end;
     align-self:center;
-    /* height:0 + min-height → el logo toma la altura del título sin agrandar
-       la fila con su tamaño propio. Tope de 200px: si el título pasa de 3
-       líneas, el logo no sigue creciendo. */
-    height:0;
-    min-height:min(calc(100% - 36px), 200px);   /* fila del h1 menos sus márgenes (18px + 18px) */
-    width:auto;
-    aspect-ratio:1 / 1;
-    margin:18px 0;            /* los mismos márgenes del h1, para igualar su altura */
+    /* mismo tamaño en todas las divisiones: el del logo de Control y
+       Navegación, cuyo título ocupa 3 líneas (≈183px) */
+    width:184px;
+    height:184px;
     object-fit:contain;
     filter:drop-shadow(0 12px 30px rgba(0,0,0,.45));   /* sombra neutra: sirve para logos de cualquier color */
 }
