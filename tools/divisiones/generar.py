@@ -27,10 +27,21 @@ DIVISIONES = [
         "titulo": "Astronomía",
         "titulo_grad": "y divulgación del cielo",
         "intro": (
-            "Observación astronómica, ciclos de conferencias y campañas de divulgación "
-            "científica. La división representa al capítulo en competencias internacionales "
-            "y acerca el cielo a la comunidad universitaria y regional."
+            "Promovemos el estudio del universo mediante el desarrollo y la aplicación de "
+            "instrumentos científicos, técnicas de observación, análisis de datos y actividades "
+            "de divulgación que fortalecen el conocimiento de la astronomía y las ciencias espaciales."
         ),
+        "temas": [
+            ("Astronomía observacional", ""),
+            ("Astrofísica", ""),
+            ("Instrumentación astronómica", ""),
+            ("Radioastronomía", ""),
+            ("Análisis y procesamiento de datos científicos", ""),
+            ("Meteorología espacial", ""),
+            ("Ciencia ciudadana: asteroides, estrellas variables y exoplanetas", ""),
+            ("Software para astronomía", ""),
+            ("Divulgación y educación científica", ""),
+        ],
         "imagen": "divasatro.jpeg",
         "badge": "Astronomía · Observación · Outreach",
         "lineas": [
@@ -61,9 +72,24 @@ DIVISIONES = [
         "titulo": "Sistemas Inteligentes",
         "titulo_grad": "y Estratégicos",
         "intro": (
-            "Investigación y desarrollo en inteligencia artificial, automatización y "
-            "planeación estratégica aplicadas a los proyectos aeroespaciales del capítulo."
+            "Investigamos y desarrollamos sistemas capaces de analizar información, aprender, "
+            "tomar decisiones y operar de forma autónoma con seguridad y resiliencia."
         ),
+        "temas": [
+            ("Inteligencia artificial", ""),
+            ("Aprendizaje automático", ""),
+            ("Visión por computador", ""),
+            ("Robótica", ""),
+            ("Sistemas autónomos y enjambres", ""),
+            ("Planificación y toma de decisiones", ""),
+            ("Autonomía espacial", ""),
+            ("Guerra electrónica y EW cognitiva", ""),
+            ("Ciberseguridad", ""),
+            ("ISR: inteligencia, vigilancia y reconocimiento", ""),
+            ("Defensa y resiliencia", ""),
+            ("Seguridad funcional", ""),
+            ("Protección de infraestructuras críticas", ""),
+        ],
         "imagen": "div2.jpeg",
         "badge": "IA · Automatización · Estrategia",
         "lineas": [
@@ -157,9 +183,22 @@ DIVISIONES = [
         "titulo": "Percepción, Sensores",
         "titulo_grad": "y Comunicaciones",
         "intro": (
-            "Desarrollo de sistemas de sensores, visión artificial y enlaces de comunicación "
-            "para la telemetría y el monitoreo de los proyectos del capítulo."
+            "Desarrollamos tecnologías para adquirir, transmitir y procesar información "
+            "del entorno mediante sensores y sistemas de comunicación."
         ),
+        "temas": [
+            ("Radar", ""),
+            ("LiDAR", ""),
+            ("EO/IR: sensores electro-ópticos e infrarrojos", ""),
+            ("Radiofrecuencia (RF)", ""),
+            ("Sensores e instrumentación", ""),
+            ("Fusión de sensores", ""),
+            ("Procesamiento de señales", ""),
+            ("Procesamiento de imágenes", ""),
+            ("Comunicaciones", ""),
+            ("Telemetría", ""),
+            ("Navegación y posicionamiento", ""),
+        ],
         "imagen": "psc.jpeg",
         "badge": "Sensores · Visión · Enlaces",
         "lineas": [
@@ -232,7 +271,11 @@ def pagina(d, v):
     ant, sig = DIVISIONES[i - 1], DIVISIONES[(i + 1) % len(DIVISIONES)]
     items_resumen = [nombre for nombre, _ in d["temas"]] if d.get("temas") else d["lineas"]
     titulo_resumen = "Temas de interés" if d.get("temas") else "Líneas de trabajo"
-    clase_resumen = " division-lines--cols" if len(items_resumen) > 5 else ""
+    clase_resumen = ""
+    if len(items_resumen) > 9:
+        clase_resumen = " division-lines--cols division-lines--dense"
+    elif len(items_resumen) > 5:
+        clase_resumen = " division-lines--cols"
     chips = "\n".join(f'                                <li>{escape(l)}</li>' for l in items_resumen)
     lideres = "\n".join(f"                                {lider(*l)}" for l in d["lideres"])
     proyectos = "\n".join(
