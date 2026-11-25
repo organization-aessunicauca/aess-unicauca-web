@@ -353,33 +353,265 @@
     color:var(--muted);
 }
 
-/* ---------- Widget de YouTube ---------- */
+/* ---------- Lista de reproducción de YouTube ---------- */
 .division-video{ margin-bottom:40px; }
-.division-video__frame{
+
+.yt-playlist{
+    border:1px solid var(--panel-border);
+    border-radius:18px;
+    background:linear-gradient(150deg, rgba(124,34,56,.28), var(--panel) 55%);
+    padding:24px;
+}
+.yt-playlist__head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:12px 20px;
+    margin-bottom:20px;
+}
+.yt-playlist__kicker{
+    display:block;
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--orange-light);
+}
+.yt-playlist__head h3{
+    margin:8px 0 4px;
+    font-family:var(--display);
+    font-size:1.15rem;
+    line-height:1.3;
+    text-transform:uppercase;
+    color:var(--cream);
+}
+.yt-playlist__count{
+    font-family:var(--body);
+    font-size:.88rem;
+    color:var(--muted);
+}
+.yt-playlist__more{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    border-radius:999px;
+    border:1px solid rgba(246,241,234,.3);
+    color:var(--cream);
+    font-family:var(--body);
+    font-weight:600;
+    font-size:.88rem;
+    text-decoration:none;
+    white-space:nowrap;
+    transition:border-color .25s ease, background .25s ease;
+}
+.yt-playlist__more:hover{
+    border-color:var(--orange);
+    background:rgba(209,75,44,.15);
+}
+
+.yt-playlist__body{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+}
+.yt-playlist.has-list .yt-playlist__body{
+    grid-template-columns:minmax(0, 1.7fr) minmax(0, 1fr);
+}
+
+.yt-playlist__player{
     position:relative;
     aspect-ratio:16 / 9;
-    border-radius:16px;
+    border-radius:14px;
     overflow:hidden;
-    border:1px solid var(--panel-border);
-    background:var(--panel);
+    background:#000;
+    box-shadow:0 18px 40px rgba(0,0,0,.45);
 }
-.division-video__frame iframe{
+.yt-playlist__player iframe{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
     border:0;
 }
-.division-video__link{
-    display:inline-block;
-    margin-top:14px;
+
+.yt-playlist__side{
+    position:relative;
+    min-height:0;
+}
+.yt-playlist__list{
+    list-style:none;
+    margin:0;
+    padding:0 6px 0 0;
+    display:grid;
+    gap:8px;
+    align-content:start;
+    /* la lista se desplaza sola y mide lo mismo que el video */
+    position:absolute;
+    inset:0;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:rgba(224,134,92,.5) transparent;
+}
+.yt-playlist__item{
+    width:100%;
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:12px;
+    align-items:center;
+    padding:8px;
+    border:1px solid transparent;
+    border-radius:12px;
+    background:rgba(255,255,255,.025);
+    color:inherit;
+    text-align:left;
+    cursor:pointer;
+    font:inherit;
+    transition:background .25s ease, border-color .25s ease;
+}
+.yt-playlist__item:hover{ background:rgba(255,255,255,.06); }
+.yt-playlist__item.is-active{
+    border-color:rgba(224,134,92,.6);
+    background:linear-gradient(150deg, rgba(124,34,56,.5), rgba(209,75,44,.18));
+}
+.yt-playlist__item:focus-visible{
+    outline:2px solid var(--orange-light);
+    outline-offset:2px;
+}
+.yt-playlist__thumb{
+    position:relative;
+    aspect-ratio:16 / 9;
+    border-radius:8px;
+    overflow:hidden;
+    background:var(--maroon);
+}
+.yt-playlist__thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+.yt-playlist__num{
+    position:absolute;
+    left:6px;
+    bottom:6px;
+    padding:2px 6px;
+    border-radius:4px;
+    background:rgba(8,6,7,.8);
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:1px;
+    color:var(--cream);
+}
+.yt-playlist__item.is-active .yt-playlist__num{ background:var(--orange); }
+.yt-playlist__text{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width:0;
+}
+.yt-playlist__title{
     font-family:var(--body);
     font-weight:600;
-    font-size:.92rem;
-    color:var(--orange-light);
-    text-decoration:none;
+    font-size:.86rem;
+    line-height:1.35;
+    color:var(--cream);
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
 }
-.division-video__link:hover{ text-decoration:underline; }
+.yt-playlist__date{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--muted);
+}
+
+/* ---------- Galería de la división ---------- */
+.division-gallery{ margin-bottom:40px; }
+.division-gallery__grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    grid-auto-rows:260px;
+    gap:16px;
+}
+.division-gallery__item{
+    position:relative;
+    padding:0;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    overflow:hidden;
+    background:var(--panel);
+    cursor:zoom-in;
+}
+.division-gallery__item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s ease;
+}
+.division-gallery__item:hover img{ transform:scale(1.05); }
+.division-gallery__item:focus-visible{
+    outline:2px solid var(--orange-light);
+    outline-offset:3px;
+}
+.division-gallery__caption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:28px 14px 12px;
+    background:linear-gradient(to top, rgba(8,6,7,.85), transparent);
+    font-family:var(--body);
+    font-size:.84rem;
+    font-weight:600;
+    line-height:1.35;
+    color:var(--cream);
+    text-align:left;
+}
+
+.division-lightbox{
+    margin:auto;          /* el reset global (* { margin:0 }) le quita el centrado al <dialog> */
+    width:fit-content;
+    max-width:min(1100px, 92vw);
+    max-height:92vh;
+    padding:0;
+    border:0;
+    background:transparent;
+    overflow:visible;
+}
+.division-lightbox::backdrop{ background:rgba(6,5,6,.92); }
+.division-lightbox figure{ margin:0; text-align:center; }
+.division-lightbox img{
+    max-width:100%;
+    max-height:80vh;
+    border-radius:12px;
+    display:block;
+    margin:0 auto;
+}
+.division-lightbox figcaption{
+    margin-top:12px;
+    font-family:var(--body);
+    color:var(--cream);
+}
+.division-lightbox__btn{
+    position:fixed;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid rgba(246,241,234,.3);
+    background:rgba(8,6,7,.7);
+    color:var(--cream);
+    font-size:1.2rem;
+    cursor:pointer;
+    z-index:1;
+}
+.division-lightbox__btn:hover{ border-color:var(--orange); }
+.division-lightbox__close{ top:20px; right:20px; }
+.division-lightbox__prev{ left:20px; top:50%; transform:translateY(-50%); }
+.division-lightbox__next{ right:20px; top:50%; transform:translateY(-50%); }
 
 /* ---------- Convocatoria ---------- */
 .division-join{
@@ -440,6 +672,14 @@
     .division-hero{
         grid-template-columns:1fr;
     }
+
+    .yt-playlist.has-list .yt-playlist__body{
+        grid-template-columns:1fr;
+    }
+    .yt-playlist__list{
+        position:static;
+        max-height:360px;
+    }
 }
 
 @media (max-width: 760px){
@@ -468,6 +708,20 @@
     .division-project-grid{
         grid-template-columns:1fr;
     }
+
+    .yt-playlist{ padding:16px; }
+    .yt-playlist__item{ grid-template-columns:104px 1fr; }
+
+    .division-gallery__grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:180px;
+        gap:10px;
+    }
+    .division-gallery__caption{ display:none; }
+
+    .division-lightbox__prev{ left:8px; }
+    .division-lightbox__next{ right:8px; }
+    .division-lightbox__close{ top:12px; right:12px; }
 
     .division-tabs{
         margin:0 -20px;

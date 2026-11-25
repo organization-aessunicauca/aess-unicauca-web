@@ -1,0 +1,53 @@
+# Actualiza una vez al día la lista de videos de YouTube que muestran las
+# páginas del sitio (por ejemplo, el curso de Control y Navegación).
+# También se puede lanzar a mano: pestaña Actions -> "Actualizar videos de YouTube" -> Run workflow.
+name: Actualizar videos de YouTube
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # todos los días, 6:17 a. m. hora de Colombia
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "pages/**/*.html"
+      - "tools/youtube/**"
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: youtube-listas
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Descargar listas
+        run: python3 tools/youtube/actualizar_listas.py
+
+      - name: Guardar cambios
+        id: guardar
+        run: |
+          if git diff --quiet -- shared/data/youtube && [ -z "$(git ls-files --others --exclude-standard shared/data/youtube)" ]; then
+            echo "Sin videos nuevos."
+            echo "cambios=no" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add shared/data/youtube
+          git commit -m "Actualiza lista de videos de YouTube"
+          git push
+          echo "cambios=si" >> "$GITHUB_OUTPUT"
+
+      # Los push hechos por este flujo no disparan la publicación de Pages por sí solos.
+      - name: Publicar el sitio
+        if: steps.guardar.outputs.cambios == 'si'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "No se pudo pedir la publicación; se hará con el próximo cambio."

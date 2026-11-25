@@ -90,10 +90,21 @@ DIVISIONES = [
         "titulo": "Control y Navegación",
         "titulo_grad": "para sistemas aeroespaciales",
         "intro": (
-            "Diseño de sistemas de control, guiado y navegación para cohetes, satélites y "
-            "vehículos no tripulados desarrollados por los equipos del capítulo."
+            "Desarrollamos métodos de modelado, control y automatización de sistemas "
+            "dinámicos que garantizan su estabilidad, precisión y operación autónoma."
         ),
-        "imagen": "controlynav.jpeg",
+        "imagen": "divisiones/control-navegacion/portada.webp",
+        "galeria": [
+            ("divisiones/control-navegacion/cnc.webp",
+             "Integrante de la división operando el software de control de una máquina CNC",
+             "Control de una máquina CNC"),
+            ("divisiones/control-navegacion/curso-vision.webp",
+             "Sesión del curso de visión por computadora con una presentación proyectada",
+             "Curso de visión por computadora: una foto es una hoja cuadriculada"),
+            ("divisiones/control-navegacion/deteccion-color.webp",
+             "Portátil mostrando una práctica de detección por color con la cámara",
+             "Práctica: detección por color en tiempo real"),
+        ],
         "badge": "Control · Guiado · Navegación",
         "lineas": [
             "Diseño de controladores y estrategias de estabilidad",
@@ -179,7 +190,12 @@ def lider(nombre, rol, foto):
             f'<span class="division-leader__role">{escape(rol)}</span></li>')
 
 
-def pagina(d):
+def version_assets(html):
+    m = re.search(r'main\.css\?v=(\d+)', html)
+    return m.group(1) if m else "1"
+
+
+def pagina(d, v):
     i = DIVISIONES.index(d)
     ant, sig = DIVISIONES[i - 1], DIVISIONES[(i + 1) % len(DIVISIONES)]
     chips = "\n".join(f'                                <li>{escape(l)}</li>' for l in d["lineas"])
@@ -193,16 +209,57 @@ def pagina(d):
     video = ""
     if d.get("youtube_lista"):
         lista = escape(d["youtube_lista"])
+        titulo_lista = escape(d["youtube_titulo"])
         video = f'''
                 <section class="division-video">
                     <div class="section-meta">Videos del curso</div>
-                    <div class="division-video__frame">
-                        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={lista}"
-                                title="{escape(d["youtube_titulo"])}" loading="lazy"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="yt-playlist" data-youtube-list="{lista}" data-src="../../shared/data/youtube/{lista}.json">
+                        <div class="yt-playlist__head">
+                            <div>
+                                <span class="yt-playlist__kicker">Lista de reproducción</span>
+                                <h3>{titulo_lista}</h3>
+                                <span class="yt-playlist__count"></span>
+                            </div>
+                            <a class="yt-playlist__more" href="https://www.youtube.com/playlist?list={lista}" target="_blank" rel="noopener">Ver en YouTube &rarr;</a>
+                        </div>
+                        <div class="yt-playlist__body">
+                            <div class="yt-playlist__player">
+                                <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list={lista}&amp;rel=0"
+                                        title="{titulo_lista}" loading="lazy"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                            <div class="yt-playlist__side" hidden>
+                                <ol class="yt-playlist__list"></ol>
+                            </div>
+                        </div>
                     </div>
-                    <a class="division-video__link" href="https://www.youtube.com/playlist?list={lista}" target="_blank" rel="noopener">Ver la lista completa en YouTube &rarr;</a>
+                    <script src="../../shared/scripts/youtube-playlist.js?v={v}" defer></script>
+                </section>
+'''
+    galeria = ""
+    if d.get("galeria"):
+        items = "\n".join(
+            f'''                        <button type="button" class="division-gallery__item" data-full="../../assets/images/{foto}" data-caption="{escape(pie)}">
+                            <img src="../../assets/images/{foto}" alt="{escape(alt)}" loading="lazy">
+                            <span class="division-gallery__caption">{escape(pie)}</span>
+                        </button>''' for foto, alt, pie in d["galeria"])
+        galeria = f'''
+                <section class="division-gallery">
+                    <div class="section-meta">Galería de la división</div>
+                    <div class="division-gallery__grid">
+{items}
+                    </div>
+                    <dialog class="division-lightbox" id="division-lightbox" aria-label="Foto ampliada">
+                        <button type="button" class="division-lightbox__btn division-lightbox__close" data-accion="cerrar" aria-label="Cerrar">&times;</button>
+                        <button type="button" class="division-lightbox__btn division-lightbox__prev" data-accion="anterior" aria-label="Foto anterior">&larr;</button>
+                        <figure>
+                            <img src="" alt="">
+                            <figcaption></figcaption>
+                        </figure>
+                        <button type="button" class="division-lightbox__btn division-lightbox__next" data-accion="siguiente" aria-label="Foto siguiente">&rarr;</button>
+                    </dialog>
+                    <script src="../../shared/scripts/division-gallery.js?v={v}" defer></script>
                 </section>
 '''
     titulo_lideres = "Quiénes la lideran" if len(d["lideres"]) > 1 else "Quién la lidera"
@@ -247,7 +304,7 @@ def pagina(d):
 {proyectos}
                     </div>
                 </section>
-{video}
+{video}{galeria}
                 <section class="division-join">
                     <div>
                         <span class="eyebrow">Convocatorias abiertas</span>
@@ -280,7 +337,8 @@ PATRON = re.compile(r'<div class="division-page">.*?</div>\s*</div>\s*(?=</secti
 for d in DIVISIONES:
     ruta = RAIZ / "pages" / "divisiones" / f'{d["archivo"]}.html'
     html = ruta.read_text(encoding="utf-8")
-    nuevo, n = PATRON.subn(lambda _m: pagina(d) + "\n    ", html, count=1)
+    v = version_assets(html)
+    nuevo, n = PATRON.subn(lambda _m: pagina(d, v) + "\n    ", html, count=1)
     if n != 1:
         raise SystemExit(f"No encontré el bloque .division-page en {ruta}")
     ruta.write_text(nuevo, encoding="utf-8")
