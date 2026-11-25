@@ -294,7 +294,7 @@ y abrir `http://localhost:8000`.
 Si haces cambios en CSS o JS:
 
 - recarga con `Ctrl + F5`
-- **antes de publicar, sube el número de versión** (`?v=AAAAMMDD`) que llevan
+- **antes de publicar, sube el número de versión** (`?v=AAAAMMDD`, o `AAAAMMDDNN` si se publica más de una vez el mismo día) que llevan
   `styles/main.css`, sus `@import` y los `<script>` de `shared/scripts/`. Si no
   se cambia, los navegadores de los visitantes pueden seguir usando el CSS
   viejo con el HTML nuevo y la página se ve desarmada. Para cambiarlo en
