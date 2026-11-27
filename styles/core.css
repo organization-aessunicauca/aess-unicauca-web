@@ -3458,3 +3458,9 @@ nav{
     .board,
     .admin-board{ margin-left:220px; }
 }
+
+/* Junta Administrativa: logos y texto a la izquierda, líderes a la derecha */
+@media (min-width:1101px){
+    .admin-board--split .board-layout{ grid-template-columns:minmax(0, 2fr) minmax(0, 3fr); }
+    .admin-board--split .admin-aside{ order:-1; }
+}
