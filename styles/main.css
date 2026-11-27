@@ -1,13 +1,13 @@
 /* Punto de entrada único: estilos compartidos y módulos por área. */
-@import url("./core.css?v=2026112717");
-@import url("./pages/history.css?v=2026112717");
-@import url("./pages/divisiones.css?v=2026112717");
-@import url("./pages/division-detail.css?v=2026112717");
-@import url("./pages/galeria.css?v=2026112717");
-@import url("./pages/noticias.css?v=2026112717");
-@import url("./pages/nasa.css?v=2026112717");
-@import url("./pages/proyectos.css?v=2026112717");
-@import url("./pages/not-found.css?v=2026112717");
+@import url("./core.css?v=2026112718");
+@import url("./pages/history.css?v=2026112718");
+@import url("./pages/divisiones.css?v=2026112718");
+@import url("./pages/division-detail.css?v=2026112718");
+@import url("./pages/galeria.css?v=2026112718");
+@import url("./pages/noticias.css?v=2026112718");
+@import url("./pages/nasa.css?v=2026112718");
+@import url("./pages/proyectos.css?v=2026112718");
+@import url("./pages/not-found.css?v=2026112718");
 
 /* Quitar de aqui despues. */
 :root {
