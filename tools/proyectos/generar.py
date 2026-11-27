@@ -24,7 +24,7 @@ FORM_GENERAL = "https://forms.gle/ge2w6SF74GaRevaz9"
 # CONVOCATORIAS ABIERTAS
 # Cada una: titulo, division, descripcion, perfiles (lista), fecha_limite
 # (texto libre o None) y enlace (None = formulario general).
-# Lista vacía = se muestra un aviso de "próximas convocatorias".
+# Lista vacía = la sección no aparece (queda solo el recuadro rojo del final).
 # ---------------------------------------------------------------------------
 CONVOCATORIAS = [
     # {
@@ -205,18 +205,10 @@ def tarjeta_competencia(c):
 
 
 def seccion_convocatorias():
+    # Sin convocatorias reales no se muestra nada: el llamado a participar
+    # ya está en el recuadro rojo del final de la página.
     if not CONVOCATORIAS:
-        return f'''                <section class="calls" aria-labelledby="calls-title">
-                    <div class="section-meta">Convocatorias abiertas</div>
-                    <div class="calls-empty">
-                        <div>
-                            <span class="eyebrow">Próximas convocatorias</span>
-                            <h2 id="calls-title">¿Quieres sumarte a un proyecto?</h2>
-                            <p>Pronto abriremos convocatorias para los equipos y proyectos del capítulo. Déjanos tus datos y te avisamos cuando haya una que encaje con tu perfil.</p>
-                        </div>
-                        <a href="{FORM_GENERAL}" class="btn-solid" target="_blank" rel="noopener">Quiero participar &rarr;</a>
-                    </div>
-                </section>'''
+        return ""
     cards = []
     for c in CONVOCATORIAS:
         perfiles = "".join(f"<li>{escape(p)}</li>" for p in c.get("perfiles", []))
