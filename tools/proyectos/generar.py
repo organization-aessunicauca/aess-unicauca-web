@@ -167,6 +167,10 @@ LABS = [
      "materiales, fabricación, instrumentación y pruebas estáticas."),
 ]
 
+ICONO_AREA = {
+    "Satélites": "🛰️", "Cohetería": "🚀", "Hidrocohetería": "💧", "Rovers": "🤖",
+    "Hackatón": "💻", "Radio": "📡", "UAV": "✈️",
+}
 
 
 def puesto(r, estado=None):
@@ -181,16 +185,16 @@ def puesto(r, estado=None):
     return f'<span class="comp-result comp-result--{clase}">{texto}</span>'
 
 
-def tarjeta_competencia(c, anio=None):
+def tarjeta_competencia(c):
     meta = " · ".join(escape(x) for x in (c["lugar"], c["fecha"]) if x)
     cat = f'<span class="comp-card__cat">{escape(c["categoria"])}</span>' if c["categoria"] else ""
-    kicker = escape(c["area"]) + (f" / {anio}" if anio else "")
+    icono = ICONO_AREA.get(c["area"], "⭐")
     clases = " is-podium" if c["resultado"] in (1, 2, 3) else ""
     if c.get("estado") == "preparacion":
         clases += " is-upcoming"
     return f'''                            <li class="comp-card{clases}">
                                 <div class="comp-card__top">
-                                    <span class="comp-card__area">{kicker}</span>
+                                    <span class="comp-card__area"><span aria-hidden="true">{icono}</span> {escape(c["area"])}</span>
                                     {puesto(c["resultado"], c.get("estado"))}
                                 </div>
                                 <h3>{escape(c["equipo"])}</h3>
@@ -237,7 +241,7 @@ def seccion_convocatorias():
 
 def nota_panel(anio):
     if all(c.get("estado") == "preparacion" for c in COMPETENCIAS[anio]):
-        return (f'<p class="comp-panel__note">Rumbo a {anio}: '
+        return (f'<p class="comp-panel__note"><span aria-hidden="true">🚀</span> Rumbo a {anio}: '
                 f'equipos que ya se están preparando para competir.</p>')
     return ""
 
@@ -277,7 +281,7 @@ def seccion_competencias():
                         <h3 class="comp-panel__year">{a}</h3>
                         {nota_panel(a)}
                         <ul class="comp-grid">
-{chr(10).join(tarjeta_competencia(c, a) for c in COMPETENCIAS[a])}
+{chr(10).join(tarjeta_competencia(c) for c in COMPETENCIAS[a])}
                         </ul>
                     </div>''' for a in anios)
     return f'''                <section class="competitions" aria-labelledby="comp-title">
