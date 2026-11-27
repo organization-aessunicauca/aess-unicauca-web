@@ -3464,3 +3464,14 @@ nav{
     .admin-board--split .board-layout{ grid-template-columns:minmax(0, 2fr) minmax(0, 3fr); }
     .admin-board--split .admin-aside{ order:-1; }
 }
+
+/* Las dos juntas seguidas: la cuadrícula de la Administrativa empieza justo
+   donde termina la de la Directiva, con el mismo espacio que entre tarjetas. */
+@media (min-width:1101px){
+    #nosotros.board{ padding-bottom:0; }
+    #divisiones.admin-board--split{ padding-top:18px; }
+}
+@media (max-width:1100px){
+    #nosotros.board{ padding-bottom:40px; }
+    #divisiones.admin-board--split{ padding-top:20px; }
+}
