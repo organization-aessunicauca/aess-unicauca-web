@@ -145,7 +145,7 @@
 
 .participa-header h2{
 
-    font-family:'Archivo Black',sans-serif;
+    font-family:'Barlow Condensed',sans-serif;
     font-size:2.8rem;
     color:#fff;
     margin-bottom:20px;
@@ -217,7 +217,7 @@
     position:relative;
     margin-bottom:18px;
     padding-bottom:14px;
-    font-family:'Archivo Black',sans-serif;
+    font-family:'Barlow Condensed',sans-serif;
     font-size:1.2rem;
     color:#fff;
     letter-spacing:.08em;
@@ -331,9 +331,9 @@
             --orange-light: #e0865c;
             --cream: #f6f1ea;
             --muted: #b9a39b;
-            --mono: 'JetBrains Mono', monospace;
-            --display: 'Archivo Black', sans-serif;
-            --body: 'Inter', sans-serif;
+            --mono: 'IBM Plex Mono', monospace;
+            --display: 'Barlow Condensed', sans-serif;
+            --body: 'Barlow', sans-serif;
         }
 
         .main-content--scroll{

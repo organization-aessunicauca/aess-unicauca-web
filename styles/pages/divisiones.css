@@ -20,9 +20,9 @@
             --orange-light: #e0865c;
             --cream: #f6f1ea;
             --muted: #b9a39b;
-            --mono: 'JetBrains Mono', monospace;
-            --display: 'Archivo Black', sans-serif;
-            --body: 'Inter', sans-serif;
+            --mono: 'IBM Plex Mono', monospace;
+            --display: 'Barlow Condensed', sans-serif;
+            --body: 'Barlow', sans-serif;
         }
 
         .main-content--scroll{
