@@ -3076,3 +3076,111 @@ nav{
         width:44px;
     }
 }
+
+
+/* ==========================================================
+   JUNTA DIRECTIVA · dos mitades
+   Izquierda: cuadrícula 2 × 3 (advisor-chair, vice chair-secretaria,
+   web master-tesorero). Derecha: logo, título, descripción y correo,
+   centrados y fijos mientras se recorre la cuadrícula.
+   ========================================================== */
+.board--split .board-layout{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+    gap:56px;
+    align-items:start;
+    max-width:1320px;
+    margin:0 auto;
+}
+.board-grid--pairs{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:18px;
+}
+.board-grid--pairs .board-card{ aspect-ratio:4 / 5; }
+
+.board-aside{
+    align-self:center;      /* centrado verticalmente respecto a la cuadrícula */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:24px 12px;
+}
+.board-logo{
+    width:clamp(150px, 16vw, 220px);
+    height:auto;
+    aspect-ratio:1 / 1;
+    object-fit:contain;
+    margin-bottom:28px;
+    filter:drop-shadow(0 16px 36px rgba(0,0,0,.5));
+}
+.board-aside .board-tag{ margin-bottom:12px; text-transform:uppercase; }
+.board-aside h2{
+    margin:0 0 18px;
+    font-family:'Archivo Black', Arial, sans-serif;
+    font-size:clamp(1.6rem, 2.6vw, 2.3rem);
+    font-weight:400;
+    line-height:1.12;
+    text-transform:uppercase;
+}
+.board-aside p{
+    max-width:460px;
+    margin:0 0 30px;
+    font-size:.98rem;
+    line-height:1.75;
+    color:rgba(255,255,255,.72);
+}
+.board-contact{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    width:100%;
+    max-width:380px;
+    padding:20px 24px;
+    border:1px solid rgba(255,93,143,.45);
+    border-radius:12px;
+    background:linear-gradient(150deg, rgba(255,93,143,.12), rgba(255,255,255,.02));
+    text-decoration:none;
+    transition:border-color .25s ease, transform .25s ease, background .25s ease;
+}
+.board-contact:hover{
+    transform:translateY(-2px);
+    border-color:#ff5d8f;
+    background:linear-gradient(150deg, rgba(255,93,143,.2), rgba(255,255,255,.03));
+}
+.board-contact:focus-visible{ outline:2px solid #ff5d8f; outline-offset:3px; }
+.board-contact__tag{
+    font-family:'Archivo Black', Arial, sans-serif;
+    font-size:1.05rem;
+    color:#ff5d8f;
+}
+.board-contact__mail{
+    font-size:1rem;
+    font-weight:600;
+    color:#fff;
+}
+
+@media (max-width:1100px){
+    .board--split .board-layout{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+    .board-aside{
+        position:static;
+        order:-1;            /* en pantallas angostas: primero el texto y el correo */
+        padding:0;
+    }
+}
+@media (max-width:600px){
+    .board-grid--pairs{ gap:12px; }
+    .board-logo{ width:130px; margin-bottom:20px; }
+    .board-contact{ padding:16px; }
+}
+
+/* Inicio en celulares muy angostos: que "CONSTRUIMOS." quepa sin desbordar */
+@media (max-width:360px){
+    .hero-content h1{ font-size:2.05rem; }
+    /* "ADMINISTRATIVA" no cabía en 320px */
+    #divisiones .board-header h2{ font-size:1.45rem; }
+}
