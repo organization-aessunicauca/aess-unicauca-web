@@ -3464,3 +3464,13 @@ nav{
     .admin-board--split .board-layout{ grid-template-columns:minmax(0, 2fr) minmax(0, 3fr); }
     .admin-board--split .admin-aside{ order:-1; }
 }
+
+/* Juntas escalonadas: las dos usan columnas iguales (mitad y mitad, 56px de
+   separación). Así las tarjetas de la Administrativa empiezan a la derecha
+   de donde terminan las de la Directiva, sin cruzarse horizontalmente. */
+@media (min-width:1101px){
+    .admin-board--split .board-layout{
+        grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+        gap:56px;
+    }
+}
