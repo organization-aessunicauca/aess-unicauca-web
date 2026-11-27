@@ -644,6 +644,7 @@
 .comp-result--bronze{ background:#c27a4a; color:#1d0f06; }
 .comp-result--rank{ background: rgba(209,75,44,.2); color: var(--orange-light); border:1px solid rgba(224,134,92,.4); }
 .comp-result--part{ background: rgba(255,255,255,.06); color: var(--muted); }
+.comp-result--final{ background: rgba(217,164,65,.16); color:#e9c27a; border:1px solid rgba(217,164,65,.5); }
 .comp-result--prep{ background: rgba(64,170,255,.14); color:#8fd0ff; border:1px solid rgba(64,170,255,.4); }
 
 /* equipos rumbo a una competencia futura */

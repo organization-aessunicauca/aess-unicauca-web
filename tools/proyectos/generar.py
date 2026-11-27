@@ -39,7 +39,7 @@ CONVOCATORIAS = [
 
 # ---------------------------------------------------------------------------
 # EQUIPOS DE COMPETENCIA (fuente: páginas de Historia de cada año)
-# resultado: número de puesto (1, 2, 3...) o None si fue participación.
+# resultado: número de puesto (1, 2, 3...), "finalista", o None si fue participación.
 # area: Satélites, Cohetería, Hidrocohetería, Rovers, Hackatón, Radio...
 # ---------------------------------------------------------------------------
 COMPETENCIAS = {
@@ -76,9 +76,12 @@ COMPETENCIAS = {
          "detalle": "Cohete experimental de motor sólido con carga útil tipo CanSat."},
     ],
     2024: [
-        {"equipo": "Tres equipos CanSat", "competencia": "Mundial de CanSat (PEU-UNAM)", "lugar": "Ciudad de México",
-         "fecha": None, "resultado": None, "categoria": None, "area": "Satélites",
-         "detalle": "Tres equipos del capítulo en el diseño, integración y validación de sistemas CanSat."},
+        {"equipo": "Astra Aether", "competencia": "Mundial de Satélites Enlatados CanSat (PEU-UNAM)", "lugar": "Ciudad de México",
+         "fecha": None, "resultado": "finalista", "categoria": None, "area": "Satélites",
+         "detalle": "Finalista del mundial organizado por el Programa Espacial Universitario de la UNAM."},
+        {"equipo": "TulcánSat", "competencia": "Mundial de Satélites Enlatados CanSat (PEU-UNAM)", "lugar": "Ciudad de México",
+         "fecha": None, "resultado": 13, "categoria": None, "area": "Satélites",
+         "detalle": "Puesto 13 en el mundial organizado por el Programa Espacial Universitario de la UNAM."},
     ],
     2023: [
         {"equipo": "Katari", "competencia": "Latin American Space Challenge (LASC)", "lugar": "Tatuí, Brasil",
@@ -87,7 +90,7 @@ COMPETENCIAS = {
     ],
     2022: [
         {"equipo": "Sentinel", "competencia": "Ala Zagi Race AESS", "lugar": None,
-         "fecha": None, "resultado": None, "categoria": "Inteligencia artificial", "area": "UAV",
+         "fecha": None, "resultado": 2, "categoria": "Inteligencia artificial", "area": "UAV",
          "detalle": "Ala volante tipo Zagi en la categoría de inteligencia artificial."},
         {"equipo": "Alpha Team", "competencia": "Mundial de CanSat (UNAM)", "lugar": "Ciudad de México",
          "fecha": None, "resultado": None, "categoria": None, "area": "Satélites",
@@ -104,7 +107,7 @@ COMPETENCIAS = {
          "fecha": "Octubre", "resultado": 5, "categoria": "Cóndores", "area": "Satélites",
          "detalle": "Relación entre calidad del aire, material particulado, lluvia y COVID-19."},
         {"equipo": "Sentinel", "competencia": "Ala Zagi Race AESS", "lugar": None,
-         "fecha": None, "resultado": None, "categoria": "RF", "area": "UAV",
+         "fecha": None, "resultado": 4, "categoria": "RF", "area": "UAV",
          "detalle": "Ala volante tipo Zagi en la categoría de radiofrecuencia (RF)."},
         {"equipo": "Team Crow", "competencia": "Rover Agricultor Latinoamérica", "lugar": None,
          "fecha": "Noviembre", "resultado": 2, "categoria": None, "area": "Rovers",
@@ -171,6 +174,8 @@ ICONO_AREA = {
 def puesto(r, estado=None):
     if estado == "preparacion":
         return '<span class="comp-result comp-result--prep">En preparación</span>'
+    if r == "finalista":
+        return '<span class="comp-result comp-result--final">Finalista</span>'
     if r is None:
         return '<span class="comp-result comp-result--part">Participación</span>'
     clase = {1: "gold", 2: "silver", 3: "bronze"}.get(r, "rank")
