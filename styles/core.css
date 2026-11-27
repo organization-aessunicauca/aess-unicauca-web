@@ -3396,3 +3396,65 @@ nav{
 @media (max-width:600px){ .admin-card__head > div{ min-height:0; } }
 /* entre 1201 y 1300px el nombre más largo ocupa 3 líneas */
 @media (min-width:1201px) and (max-width:1300px){ .admin-card__head > div{ min-height:4.95rem; } }
+
+/* ==========================================================
+   JUNTA ADMINISTRATIVA · mismo esquema que la Junta Directiva
+   Izquierda: divisiones en 2 × 2. Derecha: logos, título y texto.
+   Todas las fotos de líderes miden lo mismo.
+   ========================================================== */
+.admin-board--split .board-layout{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+    gap:56px;
+    align-items:center;
+    max-width:1320px;
+    margin:0 auto;
+}
+.admin-board--split .admin-grid--v2{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    max-width:none;
+    margin:0;
+}
+.admin-board--split .admin-card__head > div{ min-height:3.75rem; }
+.admin-aside .board-tag{ margin-bottom:12px; text-transform:uppercase; }
+.admin-aside h2{ text-transform:uppercase; }
+
+/* misma medida para todas las fotos: una persona sola ocupa
+   exactamente el ancho de una foto de pareja */
+.admin-grid--v2 .admin-people,
+.admin-grid--v2 .admin-people--single{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    justify-items:stretch;
+}
+.admin-grid--v2 .admin-people--single .admin-person{
+    grid-column:1 / -1;
+    justify-self:center;
+    width:calc((100% - 6px) / 2);
+    max-width:none !important;
+}
+
+@media (max-width:1100px){
+    .admin-board--split .board-layout{ grid-template-columns:1fr; gap:40px; }
+    .admin-board--split .admin-aside{ order:-1; padding:0; }
+}
+@media (max-width:600px){
+    .admin-board--split .admin-grid--v2{ grid-template-columns:minmax(0, 1fr) !important; }
+    .admin-board--split .admin-card__head > div{ min-height:0; }
+}
+/* más ancho para las tarjetas (fotos más grandes), menos para el texto */
+.admin-board--split .board-layout{ grid-template-columns:minmax(0, 3fr) minmax(0, 2fr); gap:44px; }
+@media (min-width:1101px) and (max-width:1400px){ .admin-board--split .admin-card__head > div{ min-height:4.95rem; } }
+@media (max-width:1100px){
+    .admin-board--split .board-layout{ grid-template-columns:minmax(0, 1fr); gap:40px; }
+    .admin-board--split .admin-card__head > div{ min-height:3.75rem; }
+}
+@media (max-width:600px){
+    .admin-board--split .admin-card__head > div{ min-height:0; }
+}
+
+/* El menú lateral fijo (220px) sigue visible hasta 768px: las juntas deben
+   conservar su margen izquierdo hasta ese ancho, si no quedan tapadas. */
+@media (min-width:769px) and (max-width:1200px){
+    .board,
+    .admin-board{ margin-left:220px; }
+}
