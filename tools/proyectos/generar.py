@@ -76,6 +76,8 @@ COMPETENCIAS = {
          "detalle": "Cohete experimental de motor sólido con carga útil tipo CanSat."},
     ],
     2024: [
+        # PENDIENTE: Historia 2024 menciona un tercer equipo en este mundial; agregarlo
+        # aquí con el mismo formato cuando se confirme su nombre y resultado.
         {"equipo": "Astra Aether", "competencia": "Mundial de Satélites Enlatados CanSat (PEU-UNAM)", "lugar": "Ciudad de México",
          "fecha": None, "resultado": "finalista", "categoria": None, "area": "Satélites",
          "detalle": "Finalista del mundial organizado por el Programa Espacial Universitario de la UNAM."},
