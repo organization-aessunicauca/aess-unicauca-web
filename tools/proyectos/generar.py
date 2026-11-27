@@ -241,7 +241,7 @@ def seccion_convocatorias():
 
 def nota_panel(anio):
     if all(c.get("estado") == "preparacion" for c in COMPETENCIAS[anio]):
-        return (f'<p class="comp-panel__note"><span aria-hidden="true">🚀</span> Rumbo a {anio}: '
+        return (f'<p class="comp-panel__note">Rumbo a {anio}: '
                 f'equipos que ya se están preparando para competir.</p>')
     return ""
 
