@@ -43,6 +43,18 @@ CONVOCATORIAS = [
 # area: Satélites, Cohetería, Hidrocohetería, Rovers, Hackatón, Radio...
 # ---------------------------------------------------------------------------
 COMPETENCIAS = {
+    # "estado": "preparacion" = equipo rumbo a esa competencia (no cuenta en las cifras)
+    2027: [
+        {"equipo": "SPACS", "competencia": "Mundial de Satélites Enlatados CanSat (UNAM)", "lugar": "Ciudad de México",
+         "fecha": None, "resultado": None, "categoria": None, "area": "Satélites", "estado": "preparacion",
+         "detalle": "Misión Fobos 1."},
+        {"equipo": "TulcánSat", "competencia": "Mundial de Satélites Enlatados CanSat (UNAM)", "lugar": "Ciudad de México",
+         "fecha": None, "resultado": None, "categoria": None, "area": "Satélites", "estado": "preparacion",
+         "detalle": "Misión TulcánSat."},
+        {"equipo": "Atlas X", "competencia": "Latin American Space Challenge (LASC)", "lugar": None,
+         "fecha": None, "resultado": None, "categoria": None, "area": "Cohetería", "estado": "preparacion",
+         "detalle": "Equipo campeón del HidroChallenge IPN 2025."},
+    ],
     2025: [
         {"equipo": "Atlas X", "competencia": "HidroChallenge IPN", "lugar": "Ciudad de México",
          "fecha": "Octubre", "resultado": 1, "categoria": None, "area": "Hidrocohetería",
@@ -74,6 +86,9 @@ COMPETENCIAS = {
          "detalle": "Debut del equipo: cohete de motor sólido para un apogeo de 1000 m con un CanSat como carga útil."},
     ],
     2022: [
+        {"equipo": "Sentinel", "competencia": "Ala Zagi Race AESS", "lugar": None,
+         "fecha": None, "resultado": None, "categoria": "Inteligencia artificial", "area": "UAV",
+         "detalle": "Ala volante tipo Zagi en la categoría de inteligencia artificial."},
         {"equipo": "Alpha Team", "competencia": "Mundial de CanSat (UNAM)", "lugar": "Ciudad de México",
          "fecha": None, "resultado": None, "categoria": None, "area": "Satélites",
          "detalle": "Representó a Colombia; equipo conformado en alianza con CREATIC."},
@@ -88,6 +103,9 @@ COMPETENCIAS = {
         {"equipo": "IIXU", "competencia": "CanSat Latinoamérica", "lugar": None,
          "fecha": "Octubre", "resultado": 5, "categoria": "Cóndores", "area": "Satélites",
          "detalle": "Relación entre calidad del aire, material particulado, lluvia y COVID-19."},
+        {"equipo": "Sentinel", "competencia": "Ala Zagi Race AESS", "lugar": None,
+         "fecha": None, "resultado": None, "categoria": "RF", "area": "UAV",
+         "detalle": "Ala volante tipo Zagi en la categoría de radiofrecuencia (RF)."},
         {"equipo": "Team Crow", "competencia": "Rover Agricultor Latinoamérica", "lugar": None,
          "fecha": "Noviembre", "resultado": 2, "categoria": None, "area": "Rovers",
          "detalle": "Subcampeón, con estudiantes de Unicauca y Unicomfacauca."},
@@ -112,6 +130,21 @@ COMPETENCIAS = {
 }
 
 # ---------------------------------------------------------------------------
+# CONFERENCIAS Y ENCUENTROS ACADÉMICOS en los que ha participado el capítulo
+# (año, nombre, lugar o None, rol, detalle)
+# ---------------------------------------------------------------------------
+CONFERENCIAS = [
+    (2024, "Summit Internacional de Presidentes IEEE AESS", None, "Organizadores",
+     "Encuentro de líderes de capítulos estudiantiles IEEE AESS para compartir experiencias, proyectos y estrategias de crecimiento."),
+    (2023, "Taller Nacional sobre Drones Inteligentes", "México", "Participantes",
+     "Intercambio académico con el INAOE y el ITAM."),
+    (2023, "Intercambio académico y tecnológico TICANOR", "Alemania", "Participantes",
+     "Programa con Fraunhofer FKIE, CeADAR Ireland y la Universidad del Cauca."),
+    (2020, "Congreso Internacional de TIC X-TECH", None, "Participantes",
+     "El proyecto EXCELSO recibió mentorías de expertos en innovación."),
+]
+
+# ---------------------------------------------------------------------------
 # AESS CHALLENGE LABS (I+D)
 # ---------------------------------------------------------------------------
 LABS = [
@@ -131,11 +164,13 @@ LABS = [
 
 ICONO_AREA = {
     "Satélites": "🛰️", "Cohetería": "🚀", "Hidrocohetería": "💧", "Rovers": "🤖",
-    "Hackatón": "💻", "Radio": "📡",
+    "Hackatón": "💻", "Radio": "📡", "UAV": "✈️",
 }
 
 
-def puesto(r):
+def puesto(r, estado=None):
+    if estado == "preparacion":
+        return '<span class="comp-result comp-result--prep">En preparación</span>'
     if r is None:
         return '<span class="comp-result comp-result--part">Participación</span>'
     clase = {1: "gold", 2: "silver", 3: "bronze"}.get(r, "rank")
@@ -147,10 +182,13 @@ def tarjeta_competencia(c):
     meta = " · ".join(escape(x) for x in (c["lugar"], c["fecha"]) if x)
     cat = f'<span class="comp-card__cat">{escape(c["categoria"])}</span>' if c["categoria"] else ""
     icono = ICONO_AREA.get(c["area"], "⭐")
-    return f'''                            <li class="comp-card{' is-podium' if c["resultado"] in (1, 2, 3) else ''}">
+    clases = " is-podium" if c["resultado"] in (1, 2, 3) else ""
+    if c.get("estado") == "preparacion":
+        clases += " is-upcoming"
+    return f'''                            <li class="comp-card{clases}">
                                 <div class="comp-card__top">
                                     <span class="comp-card__area"><span aria-hidden="true">{icono}</span> {escape(c["area"])}</span>
-                                    {puesto(c["resultado"])}
+                                    {puesto(c["resultado"], c.get("estado"))}
                                 </div>
                                 <h3>{escape(c["equipo"])}</h3>
                                 <p class="comp-card__comp">{escape(c["competencia"])}{cat}</p>
@@ -194,9 +232,37 @@ def seccion_convocatorias():
                 </section>'''
 
 
+def nota_panel(anio):
+    if all(c.get("estado") == "preparacion" for c in COMPETENCIAS[anio]):
+        return (f'<p class="comp-panel__note"><span aria-hidden="true">🚀</span> Rumbo a {anio}: '
+                f'equipos que ya se están preparando para competir.</p>')
+    return ""
+
+
+def seccion_conferencias():
+    if not CONFERENCIAS:
+        return ""
+    items = "\n".join(f'''                        <li class="conf-item">
+                            <span class="conf-item__year">{a}</span>
+                            <div class="conf-item__body">
+                                <h3>{escape(n)}</h3>
+                                <p class="conf-item__meta">{" · ".join(escape(x) for x in (lugar, rol) if x)}</p>
+                                <p>{escape(d)}</p>
+                            </div>
+                        </li>''' for a, n, lugar, rol, d in sorted(CONFERENCIAS, key=lambda x: -x[0]))
+    return f'''                <section class="conferences" aria-labelledby="conf-title">
+                    <div class="section-meta">Conferencias y encuentros</div>
+                    <h2 class="conferences__title" id="conf-title">Conferencias en las que hemos participado</h2>
+                    <ol class="conf-list">
+{items}
+                    </ol>
+                </section>'''
+
+
 def seccion_competencias():
     anios = sorted(COMPETENCIAS, reverse=True)
-    todos = [c for a in anios for c in COMPETENCIAS[a]]
+    todos = [c for a in anios for c in COMPETENCIAS[a] if c.get("estado") != "preparacion"]
+    anios_compitiendo = sorted({a for a in anios for c in COMPETENCIAS[a] if c.get("estado") != "preparacion"})
     podios = sum(1 for c in todos if c["resultado"] in (1, 2, 3))
     primeros = sum(1 for c in todos if c["resultado"] == 1)
     tabs = "\n".join(
@@ -206,6 +272,7 @@ def seccion_competencias():
     paneles = "\n".join(
         f'''                    <div class="comp-panel" role="tabpanel" id="panel-{a}" aria-labelledby="tab-{a}" tabindex="0">
                         <h3 class="comp-panel__year">{a}</h3>
+                        {nota_panel(a)}
                         <ul class="comp-grid">
 {chr(10).join(tarjeta_competencia(c) for c in COMPETENCIAS[a])}
                         </ul>
@@ -217,7 +284,7 @@ def seccion_competencias():
                         <li><strong>{len(todos)}</strong><span>participaciones</span></li>
                         <li><strong>{podios}</strong><span>podios</span></li>
                         <li><strong>{primeros}</strong><span>primeros lugares</span></li>
-                        <li><strong>{len(anios)}</strong><span>años compitiendo</span></li>
+                        <li><strong>{len(anios_compitiendo)}</strong><span>años compitiendo</span></li>
                     </ul>
                     <div class="comp-tabs" role="tablist" aria-label="Año de competencia">
 {tabs}
@@ -266,6 +333,8 @@ def contenido(v):
 {seccion_convocatorias()}
 
 {seccion_competencias()}
+
+{seccion_conferencias()}
 
 {seccion_labs()}
 

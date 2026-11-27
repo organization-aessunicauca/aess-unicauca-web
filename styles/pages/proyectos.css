@@ -392,6 +392,7 @@
    ========================================================= */
 .calls__title,
 .competitions__title,
+.conferences__title,
 .labs__title,
 .calls-empty h2{
     font-family: var(--display);
@@ -403,6 +404,7 @@
 }
 .calls,
 .competitions,
+.conferences,
 .labs{ margin-bottom: 64px; }
 .labs .lead{ margin-bottom: 28px; }
 
@@ -642,6 +644,20 @@
 .comp-result--bronze{ background:#c27a4a; color:#1d0f06; }
 .comp-result--rank{ background: rgba(209,75,44,.2); color: var(--orange-light); border:1px solid rgba(224,134,92,.4); }
 .comp-result--part{ background: rgba(255,255,255,.06); color: var(--muted); }
+.comp-result--prep{ background: rgba(64,170,255,.14); color:#8fd0ff; border:1px solid rgba(64,170,255,.4); }
+
+/* equipos rumbo a una competencia futura */
+.comp-card.is-upcoming{
+    border-style: dashed;
+    border-color: rgba(64,170,255,.35);
+    background: linear-gradient(160deg, rgba(20,60,110,.28), var(--panel) 60%);
+}
+.comp-panel__note{
+    margin: 0 0 16px;
+    font-family: var(--body);
+    font-size: .95rem;
+    color: var(--muted);
+}
 .comp-card h3{
     margin:0;
     font-family: var(--display);
@@ -684,6 +700,76 @@
     color: var(--muted);
 }
 
+/* =========================================================
+   CONFERENCIAS Y ENCUENTROS (línea de tiempo)
+   ========================================================= */
+.conf-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    position:relative;
+    display:grid;
+    gap:14px;
+}
+.conf-list::before{
+    content:"";
+    position:absolute;
+    left:38px;
+    top:8px;
+    bottom:8px;
+    width:2px;
+    background: linear-gradient(to bottom, var(--orange), rgba(124,34,56,.25));
+}
+.conf-item{
+    position:relative;
+    display:grid;
+    grid-template-columns: 78px 1fr;
+    gap:18px;
+    align-items:start;
+}
+.conf-item__year{
+    position:relative;
+    z-index:1;
+    justify-self:center;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid rgba(224,134,92,.5);
+    background: var(--panel);
+    font-family: var(--mono);
+    font-size:.78rem;
+    font-weight:700;
+    color: var(--orange-light);
+}
+.conf-item__body{
+    padding:18px 22px;
+    border:1px solid var(--panel-border);
+    border-radius:14px;
+    background: var(--panel);
+}
+.conf-item h3{
+    margin:0 0 4px;
+    font-family: var(--display);
+    font-size:1rem;
+    line-height:1.3;
+    text-transform:uppercase;
+    color: var(--cream);
+}
+.conf-item__meta{
+    margin:0 0 6px !important;
+    font-family: var(--mono) !important;
+    font-size:.7rem !important;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--orange-light) !important;
+}
+.conf-item p{
+    margin:0;
+    font-family: var(--body);
+    font-size:.9rem;
+    line-height:1.6;
+    color: var(--muted);
+}
+
 @media (max-width: 1080px){
     .project-grid{ grid-template-columns: repeat(2, 1fr); }
     .project-card--feature{ grid-column: span 2; grid-row: span 1; }
@@ -709,4 +795,8 @@
     .comp-stats li{ padding:14px; min-width:0; }
     .comp-stats span{ font-size:.6rem; letter-spacing:.8px; }
     .calls-empty{ padding:24px; }
+    .conf-list::before{ left:28px; }
+    .conf-item{ grid-template-columns: 58px 1fr; gap:12px; }
+    .conf-item__year{ padding:5px 8px; font-size:.7rem; }
+    .conf-item__body{ padding:14px 16px; }
 }
