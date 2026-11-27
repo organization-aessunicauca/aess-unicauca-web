@@ -801,3 +801,28 @@
     .conf-item__year{ padding:5px 8px; font-size:.7rem; }
     .conf-item__body{ padding:14px 16px; }
 }
+
+/* =========================================================
+   EQUIPOS DE COMPETENCIA: sección centrada
+   ========================================================= */
+.competitions .competitions__title,
+.competitions .comp-panel__note{ text-align:center; }
+
+/* pestañas centradas; si no caben (móvil) se desplazan sin cortarse a la izquierda */
+.competitions.has-tabs .comp-tabs{ justify-content:safe center; }
+.comp-tab:first-child{ margin-left:auto; }
+.comp-tab:last-child{ margin-right:auto; }
+
+/* tarjetas de ancho fijo, agrupadas al centro aunque el año tenga pocas */
+.comp-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.comp-card{
+    flex:0 1 270px;
+    min-width:0;
+}
+@media (max-width: 600px){
+    .comp-card{ flex-basis:100%; }
+}
