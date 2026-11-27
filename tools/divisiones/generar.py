@@ -220,7 +220,7 @@ DIVISIONES = [
             "Monitoreo de variables para proyectos aeroespaciales",
         ],
         "lideres": [
-            ("Evelyn Karina Velasco", "Colíder", None),
+            ("Evelyn Karina Velasco", "Colíder", "evelyn.jpg"),
         ],
         "proyectos": [
             ("Investigación", "Filtro de Kalman",
